@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CECFA — Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas</title>
+  <meta name="description" content="CECFA: Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas. Congresos, workshops y divulgación científica a nivel nacional en Chile.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <a class="nav__brand" href="#top">
+    <!-- Mini phi con órbita, versión compacta del logo -->
+    <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+      <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+    </svg>
+    <span class="nav__logo">CECFA</span>
+  </a>
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav__links">
+    <a href="#quienes-somos">Quiénes somos</a>
+    <a href="#eventos">Eventos</a>
+    <a href="universidades.html">Universidades</a>
+    <a href="miembros.html">Miembros</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="noticias.html">Noticias</a>
+    <a class="nav__cta" href="#inscripciones">Inscríbete</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="hero__grid">
+    <div class="hero__content">
+      <p class="eyebrow">Chile · Desde 2012</p>
+      <h1>Coordinadora de Estudiantes de Ciencias <span class="hl-fisica">Físicas</span> y <span class="hl-astro">Astronómicas</span></h1>
+      <p class="hero__sub">
+        Somos una organización nacional de estudiantes de pregrado que crea instancias
+        para acercarte a las distintas áreas de la física y la astronomía:
+        congresos, workshops, conversatorios y más.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#inscripciones">Inscríbete al 5° Workshop</a>
+        <a class="btn btn--ghost" href="#quienes-somos">Conócenos</a>
+      </div>
+    </div>
+
+    <!-- Logo phi animado: dos órbitas con cuerpos girando -->
+    <div class="hero__phi" aria-hidden="true">
+      <svg viewBox="0 0 300 300" class="phi">
+        <defs>
+          <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge>
+              <feMergeNode in="b"/><feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Órbitas -->
+        <circle class="phi__orbit" cx="150" cy="130" r="95"/>
+        <circle class="phi__orbit phi__orbit--outer" cx="150" cy="130" r="115"/>
+
+        <!-- phi -->
+        <g class="phi__glyph">
+
+          <text class="phi__char" x="150" y="195" text-anchor="middle">φ</text>
+        </g>
+
+
+
+        <!-- Cuerpos orbitando (rotan con CSS en torno al centro 150,130) -->
+        <g class="phi__body phi__body--inner">
+          <circle cx="150" cy="35" r="6" fill="var(--h-alpha)" filter="url(#glow)"/>
+        </g>
+        <g class="phi__body phi__body--outer">
+          <circle cx="150" cy="245" r="5" fill="var(--h-beta)" filter="url(#glow)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="spectrum" aria-hidden="true">
+    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
+    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
+    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+  </div>
+</section>
+
+<!-- ============ QUIÉNES SOMOS ============ -->
+<section class="section" id="quienes-somos">
+  <div class="container">
+    <p class="eyebrow mono reveal">λ 434 nm · Quiénes somos</p>
+    <h2 class="reveal">Una red nacional hecha por estudiantes</h2>
+    <div class="cols">
+      <p class="reveal">
+        CECFA es la Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas.
+        Trabajamos a nivel nacional y nuestro mayor objetivo es crear instancias donde
+        estudiantes de pregrado puedan tener acercamientos a distintas áreas de estas ciencias.
+      </p>
+      <p class="reveal">
+        Estamos compuestos en su mayoría por estudiantes de pregrado de carreras afines a la
+        física y la astronomía a lo largo de Chile, organizados en un Consejo de Representantes
+        por carrera y campus, comisiones de trabajo y una Directiva.
+        Nuestro sello: <strong>por y para estudiantes</strong>.
+      </p>
+    </div>
+
+    <ul class="stats">
+      <li class="reveal"><span class="stats__num" data-count="6">0</span><span class="stats__label">Congresos nacionales</span></li>
+      <li class="reveal"><span class="stats__num" data-count="4">0</span><span class="stats__label">Workshops realizados</span></li>
+      <li class="reveal"><span class="stats__num">∞</span><span class="stats__label">Conversatorios y entrevistas</span></li>
+      <li class="reveal"><span class="stats__num">2027</span><span class="stats__label">Próximo Congreso Nacional</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ EVENTOS / INSCRIPCIONES ============ -->
+<section class="section section--alt" id="eventos">
+  <div class="container">
+    <p class="eyebrow mono reveal">λ 486 nm · Eventos</p>
+    <h2 class="reveal">Próximos eventos</h2>
+
+    <div class="cards">
+      <article class="card card--featured reveal" id="inscripciones">
+        <p class="card__tag">Inscripciones abiertas</p>
+        <h3>5° Workshop CECFA</h3>
+        <p class="card__meta mono">4 – 6 de agosto de 2026 · Pontificia Universidad Católica de Valparaíso, campus Curauma</p>
+        <p>
+          Nuestro quinto workshop nacional: charlas, talleres prácticos e instancias
+          para conocer a estudiantes de todo Chile. Abierto a estudiantes de pregrado
+          de carreras afines.
+        </p>
+        <!-- Reemplazar el href con el link real del formulario de inscripción (Google Forms u otro) -->
+        <a class="btn btn--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc_aU4AK9yJTH6qyF0pYBRkYy1vdk0MAVGEFK4OJuVJ33uLMQ/viewform" target="_blank" rel="noopener">Inscribirme →</a>
+      </article>
+
+      <article class="card reveal">
+        <p class="card__tag card__tag--soon">Próximamente</p>
+        <h3>7° Congreso Nacional</h3>
+        <p class="card__meta mono">2027 · Universidad de Concepción</p>
+        <p>
+          La instancia más grande de CECFA: estudiantes, investigadores e investigadoras
+          de todo el país compartiendo ciencia durante varios días. Más información pronto.
+        </p>
+        <a class="btn btn--ghost" href="#redes">Sigue nuestras redes para novedades</a>
+      </article>
+    </div>
+
+    <h3 class="list-title reveal">Nuestra historia de eventos</h3>
+    <ol class="timeline">
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2013</span>
+        <div>
+          <strong>1er Congreso Nacional</strong>
+          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2015</span>
+        <div>
+          <strong>2° Congreso Nacional</strong>
+          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2017</span>
+        <div>
+          <strong>3er Congreso Nacional</strong>
+          <p>9 – 12 de agosto · Universidad de La Serena.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2018</span>
+        <div>
+          <strong>1er Workshop</strong>
+          <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2018</span>
+        <div>
+          <strong>2° Workshop</strong>
+          <p>9 – 10 de noviembre · Universidad Andrés Bello.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2019</span>
+        <div>
+          <strong>4° Congreso Nacional</strong>
+          <p>7 – 9 de agosto · Universidad de Concepción.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2023</span>
+        <div>
+          <strong>3er Workshop</strong>
+          <p>9 – 11 de noviembre · Universidad Austral de Chile, Valdivia.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2024</span>
+        <div>
+          <strong>5° Congreso Nacional</strong>
+          <p>9 – 11 de octubre · Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2025</span>
+        <div>
+          <strong>4° Workshop</strong>
+          <p>20 – 22 de agosto · Universidad de La Serena.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2026</span>
+        <div>
+          <strong>6° Congreso Nacional</strong>
+          <p>20 – 21 de enero en la Universidad Técnica Federico Santa María, campus San Joaquín, y 22 – 23 de enero en la Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+
+<!-- ============ RESEÑAS ============ -->
+<section class="section" id="resenas">
+  <div class="container">
+    <p class="eyebrow mono reveal">λ 656 nm · Reseñas</p>
+    <h2 class="reveal">Lo que dice nuestra comunidad</h2>
+    <div class="quotes">
+      <blockquote class="quote reveal">
+        <p>“Blablablabla ñam ñam esto es una reseña de mentira, CAMBIAR ANTES DE PUBLICAR.”</p>
+        <footer>— Persona Inventada, Universidad de la Luna · 6° Congreso Nacional</footer>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <p>“Bliblibli blublublú aquí va una reseña real algún día, de verdad, lo prometo.”</p>
+        <footer>— Alguien Pendiente, Universidad de Marte · 4° Workshop</footer>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <p>“Blebleble reseña falsa número tres, si estás leyendo esto en la página publicada, avisale al iache porfa.”</p>
+        <footer>— Nadie Todavía, Universidad del Vacío Cuántico · Conversatorio</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============ FOOTER / REDES ============ -->
+<footer class="footer" id="redes">
+  <div class="container footer__grid">
+    <div>
+      <p class="nav__logo">CECFA</p>
+      <p class="muted">Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas.<br>Asociación sin fines de lucro · Chile.</p>
+    </div>
+    <div>
+      <h3 class="list-title">Redes sociales</h3>
+      <ul class="social">
+        <li><a href="https://linktr.ee/CECFA" target="_blank" rel="noopener">Linktree</a></li>
+        <li><a href="https://www.instagram.com/org.cecfa/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCokgQROqjf627CBkJz0eyFw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Documentos</h3>
+      <ul class="social">
+        <li><a href="pagina-que-no-existe.html">Estatutos (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="spectrum spectrum--footer" aria-hidden="true">
+    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
+    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
+    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+  </div>
+  <p class="footer__legal mono">© 2026 CECFA</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

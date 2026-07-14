@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miembros — CECFA</title>
+  <meta name="description" content="Directiva, representantes y colaborantes de CECFA, la Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas de Chile.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav" id="top">
+  <a class="nav__brand" href="index.html">
+    <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+      <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+    </svg>
+    <span class="nav__logo">CECFA</span>
+  </a>
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav__links">
+    <a href="index.html#quienes-somos">Quiénes somos</a>
+    <a href="index.html#eventos">Eventos</a>
+    <a href="universidades.html">Universidades</a>
+    <a href="miembros.html">Miembros</a>
+    <a href="index.html#resenas">Reseñas</a>
+    <a href="noticias.html">Noticias</a>
+    <a class="nav__cta" href="index.html#inscripciones">Inscríbete</a>
+  </nav>
+</header>
+
+<div class="container page-head">
+  <p class="eyebrow mono">λ 656 nm · CECFA</p>
+  <h1>Quienes hacemos CECFA</h1>
+</div>
+
+<!-- ============ MIEMBROS ============ -->
+<section class="section" id="miembros">
+  <div class="container">
+    <h3 class="list-title reveal">Directiva</h3>
+    <ul class="people">
+      <!-- Duplicar por cada persona. La foto es opcional: borrar la línea <img> si no hay. -->
+      <li class="person reveal">
+        <img src="img/placeholder-avatar.svg" alt="" class="person__photo">
+        <span class="person__name">Nombre Apellido</span>
+        <span class="person__role mono">Presidencia</span>
+        <span class="person__uni">Universidad</span>
+      </li>
+      <li class="person reveal">
+        <img src="img/placeholder-avatar.svg" alt="" class="person__photo">
+        <span class="person__name">Nombre Apellido</span>
+        <span class="person__role mono">Vicepresidencia</span>
+        <span class="person__uni">Universidad</span>
+      </li>
+      <li class="person reveal">
+        <img src="img/placeholder-avatar.svg" alt="" class="person__photo">
+        <span class="person__name">Nombre Apellido</span>
+        <span class="person__role mono">Secretaría General</span>
+        <span class="person__uni">Universidad</span>
+      </li>
+      <li class="person reveal">
+        <img src="img/placeholder-avatar.svg" alt="" class="person__photo">
+        <span class="person__name">Nombre Apellido</span>
+        <span class="person__role mono">Secretaría de Finanzas</span>
+        <span class="person__uni">Universidad</span>
+      </li>
+    </ul>
+
+    <h3 class="list-title reveal">Representantes y colaborantes</h3>
+    <ul class="people people--compact">
+      <li class="person reveal"><span class="person__name">Nombre Apellido</span><span class="person__role mono">Representante</span><span class="person__uni">Universidad — Carrera</span></li>
+      <li class="person reveal"><span class="person__name">Nombre Apellido</span><span class="person__role mono">Colaborante</span><span class="person__uni">Universidad — Carrera</span></li>
+      <li class="person reveal"><span class="person__name">Nombre Apellido</span><span class="person__role mono">Senior</span><span class="person__uni">Universidad — Carrera</span></li>
+    </ul>
+
+    <details class="past-events">
+      <summary>Miembros de generaciones anteriores</summary>
+      <ul>
+        <li>Nombre Apellido — Rol (período)</li>
+        <li>Nombre Apellido — Rol (período)</li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ============ FOOTER / REDES ============ -->
+<footer class="footer" id="redes">
+  <div class="container footer__grid">
+    <div>
+      <p class="nav__logo">CECFA</p>
+      <p class="muted">Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas.<br>Asociación sin fines de lucro · Chile.</p>
+    </div>
+    <div>
+      <h3 class="list-title">Redes sociales</h3>
+      <ul class="social">
+        <li><a href="https://linktr.ee/CECFA" target="_blank" rel="noopener">Linktree</a></li>
+        <li><a href="https://www.instagram.com/org.cecfa/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCokgQROqjf627CBkJz0eyFw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Documentos</h3>
+      <ul class="social">
+        <li><a href="pagina-que-no-existe.html">Estatutos (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="spectrum spectrum--footer" aria-hidden="true">
+    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
+    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
+    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+  </div>
+  <p class="footer__legal mono">© 2026 CECFA</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
