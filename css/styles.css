@@ -1,9 +1,4 @@
-/* ==========================================================
-   CECFA — identidad visual
-   Concepto: cielo nocturno de Atacama + líneas de emisión
-   de la serie de Balmer del hidrógeno como sistema de acento:
-   H-α 656 nm (rojo) · H-β 486 nm (cian) · H-γ 434 nm (violeta)
-   ========================================================== */
+
 
 :root {
   --night:    #0B1026;   /* fondo principal */
@@ -378,4 +373,32 @@ h3 { font-size: 1.2rem; }
 .notfound__title {
   font-size: clamp(2.2rem, 6vw, 3.6rem);
   margin-bottom: 0.8rem;
+}
+/* ---------- Cuenta regresiva ---------- */
+.countdown {
+  display: flex;
+  gap: 1.4rem;
+  padding: 0.9rem 1.2rem;
+  background: rgba(72, 201, 219, 0.08);
+  border: 1px solid rgba(72, 201, 219, 0.25);
+  border-radius: 10px;
+}
+.countdown__unit { display: grid; text-align: center; }
+.countdown__num {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--h-beta);
+  font-variant-numeric: tabular-nums;
+}
+.countdown__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sand);
+}
+.countdown__live {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--h-beta);
 }

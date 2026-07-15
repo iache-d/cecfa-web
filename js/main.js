@@ -49,6 +49,15 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const id = link.getAttribute('href');
     if (id.length <= 1) return;
+
+    // Caso especial: #top sube al inicio absoluto de la página
+    if (id === '#top') {
+      e.preventDefault();
+      smoothScrollTo(0);
+      history.pushState(null, '', id);
+      return;
+    }
+
     const target = document.querySelector(id);
     if (!target) return;
     e.preventDefault();
@@ -224,4 +233,37 @@ if (phiWrap && bodyInner && bodyOuter) {
     requestAnimationFrame(phiTick);
   }
   requestAnimationFrame(phiTick);
+}
+// ===== 7. Cuenta regresiva =====
+// Lee la fecha límite del atributo data-deadline y actualiza cada segundo.
+// Al llegar a cero muestra un mensaje de "en curso".
+const countdownEl = document.querySelector('.countdown');
+
+if (countdownEl) {
+  const deadline = new Date(countdownEl.dataset.deadline).getTime();
+  const cdNums = {
+    days: countdownEl.querySelector('[data-cd="days"]'),
+    hours: countdownEl.querySelector('[data-cd="hours"]'),
+    mins: countdownEl.querySelector('[data-cd="mins"]'),
+    secs: countdownEl.querySelector('[data-cd="secs"]'),
+  };
+
+  function updateCountdown() {
+    const diff = deadline - Date.now();
+
+    if (diff <= 0) {
+      countdownEl.innerHTML = '<p class="countdown__live">¡El evento está en curso! 🎉</p>';
+      clearInterval(cdTimer);
+      return;
+    }
+
+    const secs = Math.floor(diff / 1000);
+    cdNums.days.textContent = Math.floor(secs / 86400);
+    cdNums.hours.textContent = String(Math.floor((secs % 86400) / 3600)).padStart(2, '0');
+    cdNums.mins.textContent = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+    cdNums.secs.textContent = String(secs % 60).padStart(2, '0');
+  }
+
+  const cdTimer = setInterval(updateCountdown, 1000);
+  updateCountdown();
 }
