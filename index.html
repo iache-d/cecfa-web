@@ -9,21 +9,49 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
+    document.documentElement.classList.add('preload');
+    try {
+      if (localStorage.getItem('cecfa-theme') === 'day') {
+        document.documentElement.classList.add('day-preload');
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header class="nav" id="top">
-  <a class="nav__brand" href="#top">
-    <!-- Mini phi con órbita, versión compacta del logo -->
-    <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
-      <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
-    </svg>
-    <span class="nav__logo">CECFA</span>
-  </a>
+  <div class="nav__left">
+    <a class="nav__brand" href="index.html">
+      <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+        <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+      </svg>
+      <span class="nav__logo">CECFA</span>
+    </a>
+    <button class="theme-toggle" aria-label="Cambiar entre modo día y noche" title="Cambiar tema">
+          <svg class="theme-toggle__icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+          </svg>
+          <svg class="theme-toggle__icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/>
+              <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/>
+              <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+            </g>
+          </svg>
+        </button>
+  </div>
   <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <nav class="nav__links">
-    <a href="#quienes-somos">Quiénes somos</a>
+    <a href="nosotros.html">Nosotros</a>
     <a href="#eventos">Eventos</a>
     <a href="universidades.html">Universidades</a>
     <a href="miembros.html">Miembros</a>
@@ -66,11 +94,11 @@
         <!-- Órbitas -->
         <circle class="phi__orbit" cx="150" cy="130" r="95"/>
         <circle class="phi__orbit phi__orbit--outer" cx="150" cy="130" r="115"/>
-
+        
         <!-- phi -->
         <g class="phi__glyph">
 
-          <text class="phi__char" x="150" y="195" text-anchor="middle">φ</text>
+          <text class="phi__char" x="150" y="190" text-anchor="middle">φ</text>
         </g>
 
 
@@ -122,7 +150,8 @@
 </section>
 
 <!-- ============ EVENTOS / INSCRIPCIONES ============ -->
-<section class="section section--alt" id="eventos">
+<!-- ============ EVENTOS / INSCRIPCIONES ============ -->
+<section class="section" id="eventos">
   <div class="container">
     <p class="eyebrow mono reveal">λ 486 nm · Eventos</p>
     <h2 class="reveal">Próximos eventos</h2>
@@ -162,59 +191,10 @@
     <h3 class="list-title reveal">Nuestra historia de eventos</h3>
     <ol class="timeline">
       <li class="timeline__item reveal">
-        <span class="timeline__year mono">2013</span>
+        <span class="timeline__year mono">2026</span>
         <div>
-          <strong>I Congreso Nacional</strong>
-          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2015</span>
-        <div>
-          <strong>II Congreso Nacional</strong>
-          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2017</span>
-        <div>
-          <strong>III Congreso Nacional</strong>
-          <p>9 – 12 de agosto · Universidad de La Serena.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2018</span>
-        <div>
-          <strong>I Workshop</strong>
-          <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2018</span>
-        <div>
-          <strong>II Workshop</strong>
-          <p>9 – 10 de noviembre · Universidad Andrés Bello.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2019</span>
-        <div>
-          <strong>IV Congreso Nacional</strong>
-          <p>7 – 9 de agosto · Universidad de Concepción.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2023</span>
-        <div>
-          <strong>III Workshop</strong>
-          <p>9 – 11 de noviembre · Universidad Austral de Chile, Valdivia.</p>
-        </div>
-      </li>
-      <li class="timeline__item reveal">
-        <span class="timeline__year mono">2024</span>
-        <div>
-          <strong>V Congreso Nacional</strong>
-          <p>9 – 11 de octubre · Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+          <strong>VI Congreso Nacional</strong>
+          <p>20 – 21 de enero en la Universidad Técnica Federico Santa María, campus San Joaquín, y 22 – 23 de enero en la Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
         </div>
       </li>
       <li class="timeline__item reveal">
@@ -225,10 +205,59 @@
         </div>
       </li>
       <li class="timeline__item reveal">
-        <span class="timeline__year mono">2026</span>
+        <span class="timeline__year mono">2024</span>
         <div>
-          <strong>VI Congreso Nacional</strong>
-          <p>20 – 21 de enero en la Universidad Técnica Federico Santa María, campus San Joaquín, y 22 – 23 de enero en la Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
+          <strong>V Congreso Nacional</strong>
+          <p>9 – 11 de octubre · Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2023</span>
+        <div>
+          <strong>III Workshop</strong>
+          <p>9 – 11 de noviembre · Universidad Austral de Chile, Valdivia.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2019</span>
+        <div>
+          <strong>IV Congreso Nacional</strong>
+          <p>7 – 9 de agosto · Universidad de Concepción.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2018</span>
+        <div>
+          <strong>II Workshop</strong>
+          <p>9 – 10 de noviembre · Universidad Andrés Bello.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2018</span>
+        <div>
+          <strong>I Workshop</strong>
+          <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2017</span>
+        <div>
+          <strong>III Congreso Nacional</strong>
+          <p>9 – 12 de agosto · Universidad de La Serena.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2015</span>
+        <div>
+          <strong>II Congreso Nacional</strong>
+          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+        </div>
+      </li>
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2013</span>
+        <div>
+          <strong>I Congreso Nacional</strong>
+          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
         </div>
       </li>
     </ol>

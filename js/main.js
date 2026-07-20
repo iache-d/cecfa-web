@@ -7,6 +7,8 @@
 // 5. Contadores animados en las estadísticas
 // ============================================================
 
+
+
 const reduceMotion = false;
 // ===== 1. Menú móvil =====
 const toggle = document.querySelector('.nav__toggle');
@@ -101,6 +103,13 @@ if (canvas) {
 
   function drawFrame(t) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // En modo día no hay estrellas: limpiamos y salimos
+    if (document.body.classList.contains('day')) {
+      requestAnimationFrame(drawFrame);
+      return;
+    }
+
     const offsetY = window.scrollY;
 
     for (const s of stars) {
@@ -266,4 +275,36 @@ if (countdownEl) {
 
   const cdTimer = setInterval(updateCountdown, 1000);
   updateCountdown();
+}
+
+// ===== 8. Interruptor día / noche =====
+const themeToggle = document.querySelector('.theme-toggle');
+
+if (themeToggle) {
+  function setTheme(isDay) {
+    document.body.classList.toggle('day', isDay);
+    
+    try { localStorage.setItem('cecfa-theme', isDay ? 'day' : 'night'); } catch (e) {}
+  }
+
+  // Al cargar, aplica la preferencia guardada (noche por defecto)
+  // Al cargar, aplica la preferencia guardada (noche por defecto).
+  // Ya venía aplicada por el script del <head>; aquí solo sincronizamos
+  // la clase del body y el ícono, y retiramos la clase puente.
+  let saved = 'night';
+  try { saved = localStorage.getItem('cecfa-theme') || 'night'; } catch (e) {}
+  document.body.classList.toggle('day', saved === 'day');
+  
+  document.documentElement.classList.remove('day-preload');
+  // Reactiva las transiciones una vez aplicado el tema inicial
+  // Reactiva las transiciones una vez que la página cargó del todo.
+  // Usamos load + un pequeño margen para no depender del timing de pintado
+  // (evita el parpadeo intermitente de la barra al navegar).
+  window.addEventListener('load', () => {
+    setTimeout(() => document.documentElement.classList.remove('preload'), 60);
+  });
+
+  themeToggle.addEventListener('click', () => {
+    setTheme(!document.body.classList.contains('day'));
+  });
 }

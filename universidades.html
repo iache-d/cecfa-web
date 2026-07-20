@@ -9,6 +9,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
+    document.documentElement.classList.add('preload');
+    try {
+      if (localStorage.getItem('cecfa-theme') === 'day') {
+        document.documentElement.classList.add('day-preload');
+      }
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,15 +25,35 @@
 <canvas id="starfield" aria-hidden="true"></canvas>
 
 <header class="nav" id="top">
-  <a class="nav__brand" href="index.html">
-    <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
-      <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
-    </svg>
-    <span class="nav__logo">CECFA</span>
-  </a>
+  <div class="nav__left">
+    <a class="nav__brand" href="index.html">
+      <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+        <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+      </svg>
+      <span class="nav__logo">CECFA</span>
+    </a>
+    <button class="theme-toggle" aria-label="Cambiar entre modo día y noche" title="Cambiar tema">
+          <svg class="theme-toggle__icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+          </svg>
+          <svg class="theme-toggle__icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/>
+              <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/>
+              <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+            </g>
+          </svg>
+        </button>
+  </div>
   <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <nav class="nav__links">
-    <a href="index.html#quienes-somos">Quiénes somos</a>
+    <a href="nosotros.html">Nosotros</a>
     <a href="index.html#eventos">Eventos</a>
     <a href="universidades.html">Universidades</a>
     <a href="miembros.html">Miembros</a>
@@ -48,22 +77,43 @@
     </p>
 
     <h3 class="list-title reveal">Con representación activa</h3>
-    <ul class="uni-grid">
+    <ul class="uni-cards">
       <!-- Duplicar este <li> por cada universidad. Se puede agregar logo con <img> si hay autorización. -->
-      <li class="reveal">Universidad de ejemplo 1 <span class="mono">— Santiago</span></li>
-      <li class="reveal">Universidad de ejemplo 2 <span class="mono">— Valparaíso</span></li>
-      <li class="reveal">Universidad de ejemplo 3 <span class="mono">— Concepción</span></li>
-      <li class="reveal">Universidad de ejemplo 4 <span class="mono">— La Serena</span></li>
+      <li class="uni-card reveal">
+        <span class="uni-card__name">Universidad de ejemplo 1</span>
+        <span class="uni-card__place mono">Santiago</span>
+      </li>
+      <li class="uni-card reveal">
+        <span class="uni-card__name">Universidad de ejemplo 2</span>
+        <span class="uni-card__place mono">Valparaíso</span>
+      </li>
+      <li class="uni-card reveal">
+        <span class="uni-card__name">Universidad de ejemplo 3</span>
+        <span class="uni-card__place mono">Concepción</span>
+      </li>
+      <li class="uni-card reveal">
+        <span class="uni-card__name">Universidad de ejemplo 4</span>
+        <span class="uni-card__place mono">La Serena</span>
+      </li>
     </ul>
 
-    <h3 class="list-title reveal">Sin representación actual</h3>
+    <h3 class="list-title reveal">Con representación anterior</h3>
     <p class="muted reveal">
-      ¿Tu universidad no aparece? ¡Puedes ser su representante!
-      Escríbenos por nuestras <a href="#redes">redes sociales</a>.
+      Universidades que fueron parte de CECFA. ¡Esperamos su regreso!
     </p>
     <ul class="uni-grid uni-grid--inactive">
       <li class="reveal">Universidad de ejemplo 5</li>
       <li class="reveal">Universidad de ejemplo 6</li>
+    </ul>
+
+    <h3 class="list-title reveal">Sin representación aún</h3>
+    <p class="muted reveal">
+      ¿Tu universidad no aparece? ¡Puedes ser su representante!
+      Escríbenos por nuestras <a href="contacto.html">redes sociales</a>.
+    </p>
+    <ul class="uni-grid uni-grid--inactive">
+      <li class="reveal">Universidad de ejemplo 7</li>
+      <li class="reveal">Universidad de ejemplo 8</li>
     </ul>
   </div>
 </section>
