@@ -9,19 +9,25 @@
 
 
 
-const reduceMotion = false;
+// Respeta la preferencia del sistema operativo: quien tenga activado "reducir
+// movimiento" recibe la version estatica del sitio, sin estrellas animadas,
+// sin revelados al hacer scroll y sin contadores que suben solos.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // ===== 1. Menú móvil =====
 const toggle = document.querySelector('.nav__toggle');
 const links = document.querySelector('.nav__links');
 
-toggle.addEventListener('click', () => {
-  const open = links.classList.toggle('is-open');
-  toggle.setAttribute('aria-expanded', open);
-});
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
 
-links.querySelectorAll('a').forEach(a =>
-  a.addEventListener('click', () => links.classList.remove('is-open'))
-);
+  links.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => links.classList.remove('is-open'))
+  );
+}
 
 // ===== 2. Scroll suave =====
 // Interceptamos los clicks en links internos (#...) y animamos el scroll
@@ -129,16 +135,43 @@ if (canvas) {
     requestAnimationFrame(drawFrame);
   }
 
+  // Version estatica: mismas estrellas, sin parpadeo ni deriva. Se redibuja solo
+  // cuando cambia lo que se ve (scroll, resize o cambio de tema).
+  function drawStatic() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (document.body.classList.contains('day')) return;
+
+    const offsetY = window.scrollY;
+    for (const s of stars) {
+      const screenY = s.y - offsetY;
+      if (screenY < -10 || screenY > canvas.height + 10) continue;
+      ctx.fillStyle = 'rgba(242, 239, 230, 0.75)';
+      ctx.beginPath();
+      ctx.arc(s.x, screenY, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Permite que el interruptor de tema pida un redibujado en modo estatico.
+  canvas.redibujar = drawStatic;
+
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     makeStars();
+    if (reduceMotion) drawStatic();
   }
 
   window.addEventListener('resize', resize);
   window.addEventListener('load', resize);
   resize();
-  requestAnimationFrame(drawFrame);
+
+  if (reduceMotion) {
+    window.addEventListener('scroll', drawStatic, { passive: true });
+    drawStatic();
+  } else {
+    requestAnimationFrame(drawFrame);
+  }
 }
 
 // ===== 4. Revelado al hacer scroll =====
@@ -283,7 +316,11 @@ const themeToggle = document.querySelector('.theme-toggle');
 if (themeToggle) {
   function setTheme(isDay) {
     document.body.classList.toggle('day', isDay);
-    
+
+    // En modo estatico no hay bucle de animacion que repinte el cielo, asi que
+    // se pide el redibujado explicitamente al cambiar de tema.
+    if (reduceMotion && canvas && canvas.redibujar) canvas.redibujar();
+
     try { localStorage.setItem('cecfa-theme', isDay ? 'day' : 'night'); } catch (e) {}
   }
 
