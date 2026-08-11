@@ -53,6 +53,7 @@
   <nav class="nav__links">
     <a href="nosotros.html">Nosotros</a>
     <a href="#eventos">Eventos</a>
+    <a href="ponentes.html">Ponentes</a>
     <a href="universidades.html">Universidades</a>
     <a href="miembros.html">Miembros</a>
     <a href="#resenas">Reseñas</a>
@@ -74,7 +75,7 @@
         congresos, workshops, conversatorios y más.
       </p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#inscripciones">Inscríbete al 5° Workshop</a>
+        <a class="btn btn--primary" href="#eventos">Nuestros eventos</a>
         <a class="btn btn--ghost" href="#quienes-somos">Conócenos</a>
       </div>
     </div>
@@ -142,8 +143,8 @@
 
     <ul class="stats">
       <li class="reveal"><span class="stats__num" data-count="6">0</span><span class="stats__label">Congresos nacionales</span></li>
-      <li class="reveal"><span class="stats__num" data-count="4">0</span><span class="stats__label">Workshops realizados</span></li>
-      <li class="reveal"><span class="stats__num">∞</span><span class="stats__label">Conversatorios y entrevistas</span></li>
+      <li class="reveal"><span class="stats__num" data-count="5">0</span><span class="stats__label">Workshops realizados</span></li>
+      <li class="reveal"><span class="stats__num" data-count="36">0</span><span class="stats__label">Conversatorios y entrevistas</span></li>
       <li class="reveal"><span class="stats__num">2027</span><span class="stats__label">Próximo Congreso Nacional</span></li>
     </ul>
   </div>
@@ -157,26 +158,21 @@
     <h2 class="reveal">Próximos eventos</h2>
 
     <div class="cards">
-      <article class="card card--featured reveal" id="inscripciones">
-        <p class="card__tag">Inscripciones abiertas</p>
+      <article class="card card--featured reveal">
+        <p class="card__tag card__tag--done">Finalizado</p>
         <h3>V Workshop CECFA</h3>
         <p class="card__meta mono">4 – 6 de agosto de 2026 · Pontificia Universidad Católica de Valparaíso, campus Curauma</p>
-        <div class="countdown" data-deadline="2026-08-04T09:30:00-04:00" aria-label="Tiempo restante para el evento">
-          <div class="countdown__unit"><span class="countdown__num" data-cd="days">--</span><span class="countdown__label">días</span></div>
-          <div class="countdown__unit"><span class="countdown__num" data-cd="hours">--</span><span class="countdown__label">horas</span></div>
-          <div class="countdown__unit"><span class="countdown__num" data-cd="mins">--</span><span class="countdown__label">min</span></div>
-          <div class="countdown__unit"><span class="countdown__num" data-cd="secs">--</span><span class="countdown__label">seg</span></div>
-        </div>
+        <a class="card__poster" href="img/posters/v-workshop-2026.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/v-workshop-2026.jpg" alt="Afiche del V Workshop CECFA">
+        </a>
         <p>
-          Nuestro quinto workshop nacional: charlas, talleres prácticos e instancias
-          para conocer a estudiantes de todo Chile. Abierto a estudiantes de pregrado
-          de carreras afines.
+          ¡Gracias a todas y todos quienes participaron! Tres días de charlas,
+          talleres prácticos y encuentro entre estudiantes de todo Chile en Curauma.
+          Nos vemos en la próxima.
         </p>
-        <!-- Reemplazar el href con el link real del formulario de inscripción (Google Forms u otro) -->
-        <a class="btn btn--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSc_aU4AK9yJTH6qyF0pYBRkYy1vdk0MAVGEFK4OJuVJ33uLMQ/viewform" target="_blank" rel="noopener">Inscribirme →</a>
       </article>
 
-      <article class="card reveal">
+      <article class="card reveal" id="inscripciones">
         <p class="card__tag card__tag--soon">Próximamente</p>
         <h3>VII Congreso Nacional</h3>
         <p class="card__meta mono">2027 · Universidad de Concepción</p>
@@ -189,13 +185,27 @@
     </div>
 
     <h3 class="list-title reveal">Nuestra historia de eventos</h3>
+    <!-- Cada afiche vive en img/posters/ y se abre en grande al hacer clic. -->
     <ol class="timeline">
+      <li class="timeline__item reveal">
+        <span class="timeline__year mono">2026</span>
+        <div>
+          <strong>V Workshop</strong>
+          <p>4 – 6 de agosto · Pontificia Universidad Católica de Valparaíso, campus Curauma.</p>
+        </div>
+        <a class="timeline__poster" href="img/posters/v-workshop-2026.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/v-workshop-2026.jpg" alt="Afiche del V Workshop CECFA" loading="lazy">
+        </a>
+      </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2026</span>
         <div>
           <strong>VI Congreso Nacional</strong>
           <p>20 – 21 de enero en la Universidad Técnica Federico Santa María, campus San Joaquín, y 22 – 23 de enero en la Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/vi-congreso-2026.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/vi-congreso-2026.jpg" alt="Afiche del VI Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2025</span>
@@ -203,20 +213,29 @@
           <strong>IV Workshop</strong>
           <p>20 – 22 de agosto · Universidad de La Serena.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/iv-workshop-2025.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/iv-workshop-2025.jpg" alt="Afiche del IV Workshop CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2024</span>
         <div>
           <strong>V Congreso Nacional</strong>
-          <p>9 – 11 de octubre · Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+          <p>9 – 11 de octubre · Universidad Técnica Federico Santa María, campus Casa Central, Valparaíso.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/v-congreso-2024.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/v-congreso-2024.jpg" alt="Afiche del V Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2023</span>
         <div>
           <strong>III Workshop</strong>
-          <p>9 – 11 de noviembre · Universidad Austral de Chile, Valdivia.</p>
+          <p>9 y 10 de noviembre · Universidad Austral de Chile, Valdivia.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/iii-workshop-2023.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/iii-workshop-2023.jpg" alt="Afiche del III Workshop CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2019</span>
@@ -224,13 +243,19 @@
           <strong>IV Congreso Nacional</strong>
           <p>7 – 9 de agosto · Universidad de Concepción.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/iv-congreso-2019.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/iv-congreso-2019.jpg" alt="Afiche del IV Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2018</span>
         <div>
           <strong>II Workshop</strong>
-          <p>9 – 10 de noviembre · Universidad Andrés Bello.</p>
+          <p>9 y 10 de noviembre · Universidad Andrés Bello, campus República, Santiago.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/ii-workshop-2018.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/ii-workshop-2018.jpg" alt="Afiche del II Workshop CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2018</span>
@@ -238,6 +263,9 @@
           <strong>I Workshop</strong>
           <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/i-workshop-2018.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/i-workshop-2018.jpg" alt="Afiche del I Workshop CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
         <span class="timeline__year mono">2017</span>
@@ -245,22 +273,35 @@
           <strong>III Congreso Nacional</strong>
           <p>9 – 12 de agosto · Universidad de La Serena.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/iii-congreso-2017.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/iii-congreso-2017.jpg" alt="Afiche del III Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
-        <span class="timeline__year mono">2015</span>
+        <span class="timeline__year mono">2014</span>
         <div>
           <strong>II Congreso Nacional</strong>
-          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+          <p>5 – 8 de noviembre · Valparaíso, itinerante entre varias sedes: Universidad de Playa Ancha y Universidad Técnica Federico Santa María, campus Casa Central.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/ii-congreso-2014.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/ii-congreso-2014.jpg" alt="Afiche del II Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
       <li class="timeline__item reveal">
-        <span class="timeline__year mono">2013</span>
+        <span class="timeline__year mono">2012</span>
         <div>
           <strong>I Congreso Nacional</strong>
-          <p>Universidad Técnica Federico Santa María, campus Valparaíso.</p>
+          <p>22 – 26 de octubre · Universidad Técnica Federico Santa María, campus Casa Central, Valparaíso.</p>
         </div>
+        <a class="timeline__poster" href="img/posters/i-congreso-2012.jpg" target="_blank" rel="noopener">
+          <img src="img/posters/i-congreso-2012.jpg" alt="Afiche del I Congreso Nacional CECFA" loading="lazy">
+        </a>
       </li>
     </ol>
+
+    <p class="eventos-link reveal">
+      <a href="ponentes.html">Quienes han expuesto en nuestros eventos →</a>
+    </p>
   </div>
 </section>
 
@@ -271,19 +312,60 @@
   <div class="container">
     <p class="eyebrow mono reveal">λ 656 nm · Reseñas</p>
     <h2 class="reveal">Lo que dice nuestra comunidad</h2>
-    <div class="quotes">
-      <blockquote class="quote reveal">
-        <p>“Blablablabla ñam ñam esto es una reseña de mentira, CAMBIAR ANTES DE PUBLICAR.”</p>
-        <footer>— Persona Inventada, Universidad de la Luna · 6° Congreso Nacional</footer>
-      </blockquote>
-      <blockquote class="quote reveal">
-        <p>“Bliblibli blublublú aquí va una reseña real algún día, de verdad, lo prometo.”</p>
-        <footer>— Alguien Pendiente, Universidad de Marte · 4° Workshop</footer>
-      </blockquote>
-      <blockquote class="quote reveal">
-        <p>“Blebleble reseña falsa número tres, si estás leyendo esto en la página publicada, avisale al iache porfa.”</p>
-        <footer>— Nadie Todavía, Universidad del Vacío Cuántico · Conversatorio</footer>
-      </blockquote>
+    <!--
+      CÓMO AGREGAR UNA RESEÑA:
+      Copia un bloque <li class="carousel__slide"> ... </li> completo y cambia
+      el texto, el nombre y el evento. El carrusel se arma solo: los puntitos,
+      las flechas y el avance automático se generan según cuántas haya.
+      Con una sola reseña los controles desaparecen.
+    -->
+    <div class="carousel reveal" data-carousel data-autoplay="7000">
+      <div class="carousel__viewport" tabindex="0" role="group"
+           aria-roledescription="carrusel" aria-label="Reseñas de nuestra comunidad">
+        <ul class="carousel__track">
+
+          <li class="carousel__slide">
+            <blockquote class="quote">
+              <p>Blablablabla ñam ñam esto es una reseña de mentira, CAMBIAR ANTES DE PUBLICAR.</p>
+              <footer>
+                <span class="quote__who">Persona Inventada</span>
+                <span class="quote__where mono">Universidad de la Luna · 6° Congreso Nacional</span>
+              </footer>
+            </blockquote>
+          </li>
+
+          <li class="carousel__slide">
+            <blockquote class="quote">
+              <p>Bliblibli blublublú aquí va una reseña real algún día, de verdad, lo prometo.</p>
+              <footer>
+                <span class="quote__who">Alguien Pendiente</span>
+                <span class="quote__where mono">Universidad de Marte · 4° Workshop</span>
+              </footer>
+            </blockquote>
+          </li>
+
+          <li class="carousel__slide">
+            <blockquote class="quote">
+              <p>Blebleble reseña falsa número tres, si estás leyendo esto en la página publicada, avisale al iache porfa.</p>
+              <footer>
+                <span class="quote__who">Nadie Todavía</span>
+                <span class="quote__where mono">Universidad del Vacío Cuántico · Conversatorio</span>
+              </footer>
+            </blockquote>
+          </li>
+
+        </ul>
+      </div>
+
+      <div class="carousel__controls">
+        <button class="carousel__arrow" type="button" data-carousel-prev aria-label="Reseña anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="carousel__dots" data-carousel-dots></div>
+        <button class="carousel__arrow" type="button" data-carousel-next aria-label="Reseña siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>

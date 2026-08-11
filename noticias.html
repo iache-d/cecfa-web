@@ -55,6 +55,7 @@
   <nav class="nav__links">
     <a href="nosotros.html">Nosotros</a>
     <a href="index.html#eventos">Eventos</a>
+    <a href="ponentes.html">Ponentes</a>
     <a href="universidades.html">Universidades</a>
     <a href="miembros.html">Miembros</a>
     <a href="index.html#resenas">Reseñas</a>
@@ -77,28 +78,29 @@
         <ul class="news">
           <li class="news__item reveal">
             <span class="mono news__date">14 · Jul · 2026</span>
-            <a href="#">¡Abrimos las inscripciones al 5° Workshop!</a>
-            <p>Resumen breve de la noticia (1 o 2 líneas). Editar en noticias.html.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_aU4AK9yJTH6qyF0pYBRkYy1vdk0MAVGEFK4OJuVJ33uLMQ/viewform" target="_blank" rel="noopener">¡Abrimos las inscripciones al V Workshop CECFA!</a>
+            <p>Tres días de charlas y talleres en la Pontificia Universidad Católica de Valparaíso, campus Curauma, del 4 al 6 de agosto. Abierto a estudiantes de pregrado de carreras afines a la física y la astronomía.</p>
           </li>
-          <li class="news__item reveal">
-            <span class="mono news__date">01 · Jun · 2026</span>
-            <a href="#">Título de otra noticia interna</a>
-            <p>Resumen breve de la noticia.</p>
-          </li>
+          <!-- Para agregar otra noticia interna, copia el bloque <li> de arriba. -->
         </ul>
       </div>
       <div>
         <h3 class="list-title reveal">Astro-física en el mundo</h3>
+        <!--
+          Estas noticias salen de correr:  python tools/buscar-noticias.py
+          El script deja en tools/candidatos.md la lista de material reciente
+          para que Claude redacte los resúmenes y los peguemos acá.
+        -->
         <ul class="news">
           <li class="news__item reveal">
-            <span class="mono news__date">10 · Jul · 2026</span>
-            <a href="#" target="_blank" rel="noopener">Título de noticia científica (con link a la fuente)</a>
-            <p>Resumen en 1 o 2 líneas, citando la fuente original.</p>
+            <span class="mono news__date">10 · Ago · 2026</span>
+            <a href="https://science.nasa.gov/blogs/roman/2026/08/10/nasas-roman-telescope-team-begins-integrated-operations-for-launch/" target="_blank" rel="noopener">El telescopio Roman entra en la recta final para su lanzamiento</a>
+            <p>La NASA prepara el despegue del Nancy Grace Roman para el 30 de agosto, ocho meses antes de lo planificado. Observará en infrarrojo con un campo de visión al menos 100 veces mayor que el del Hubble, apuntando a energía oscura y exoplanetas. <span class="muted">Fuente: NASA.</span></p>
           </li>
           <li class="news__item reveal">
-            <span class="mono news__date">02 · Jul · 2026</span>
-            <a href="#" target="_blank" rel="noopener">Otra noticia astro-física</a>
-            <p>Resumen breve.</p>
+            <span class="mono news__date">05 · Ago · 2026</span>
+            <a href="https://www.mpg.de/26900660/tiny-vortices-discovered-on-the-sun-s-surface" target="_blank" rel="noopener">Ven por primera vez remolinos de plasma en la superficie del Sol</a>
+            <p>Con el telescopio solar Inouye detectaron inestabilidades de Kelvin-Helmholtz de apenas 20 km en la fotosfera: la teoría las predecía hace décadas y podrían explicar cómo se calienta la corona. Publicado en <em>Nature</em>. <span class="muted">Fuente: Max Planck Institute for Solar System Research.</span></p>
           </li>
         </ul>
       </div>

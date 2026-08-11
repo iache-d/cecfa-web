@@ -90,7 +90,7 @@ h3 { font-size: 1.2rem; }
   font-weight: 700; font-size: 1.3rem; letter-spacing: 0.06em;
   color: var(--ink);
 }
-.nav__links { display: flex; gap: 1.4rem; align-items: center; flex-wrap: wrap; }
+.nav__links { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 .nav__links a { color: var(--ink); font-size: 0.95rem; }
 .nav__cta {
   padding: 0.4rem 1rem;
@@ -250,6 +250,18 @@ h3 { font-size: 1.2rem; }
   padding: 0.2rem 0.7rem; border-radius: 999px;
 }
 .card__tag--soon { background: var(--h-gamma); }
+.card__tag--done { background: var(--sand); }
+.card__poster {
+  align-self: flex-start;
+  width: 120px;
+  line-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(242, 239, 230, 0.18);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card__poster:hover { transform: scale(1.05); border-color: var(--h-beta); }
+body.day .card__poster { border-color: rgba(0, 0, 0, 0.15); }
 .card__meta { color: var(--sand); }
 .card p { color: var(--ink); }
 .card .btn { margin-top: auto; }
@@ -277,6 +289,19 @@ h3 { font-size: 1.2rem; }
 }
 .timeline__item:nth-child(odd)::before { background: var(--h-alpha); box-shadow: 0 0 10px var(--h-alpha); }
 .timeline__year { color: var(--sand); min-width: 3.4rem; }
+.timeline__item > div { flex: 1; }
+.timeline__poster {
+  flex-shrink: 0;
+  align-self: center;
+  width: 64px;
+  line-height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(242, 239, 230, 0.18);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.timeline__poster:hover { transform: scale(1.08); border-color: var(--h-beta); }
+body.day .timeline__poster { border-color: rgba(0, 0, 0, 0.15); }
 .timeline__item strong { font-family: var(--font-display); }
 .timeline__item p { color: var(--sand); font-size: 0.95rem; }
 
@@ -337,14 +362,106 @@ h3 { font-size: 1.2rem; }
 .person__uni { color: var(--sand); font-size: 0.9rem; }
 .people--compact .person { padding: 0.9rem 1.1rem; }
 
-/* ---------- Reseñas ---------- */
-.quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.quote {
-  border-left: 3px solid var(--h-alpha);
-  padding: 0.3rem 0 0.3rem 1.2rem;
+/* ---------- Reseñas (carrusel) ---------- */
+.carousel { position: relative; max-width: 52rem; margin: 0 auto; }
+
+/* La ventana es la que hace scroll. scroll-snap deja cada reseña
+   perfectamente encuadrada, y de paso el deslizar con el dedo sale gratis. */
+.carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;              /* Firefox */
+  -ms-overflow-style: none;           /* Edge antiguo */
+  border-radius: 14px;
 }
-.quote p { font-style: italic; margin-bottom: 0.8rem; }
-.quote footer { color: var(--sand); font-size: 0.9rem; }
+.carousel__viewport::-webkit-scrollbar { display: none; }
+.carousel__viewport:focus-visible { outline: 2px solid var(--h-beta); outline-offset: 4px; }
+
+.carousel__track {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+}
+
+.quote {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+  background: rgba(242, 239, 230, 0.04);
+  border: 1px solid rgba(242, 239, 230, 0.1);
+  border-top: 3px solid var(--h-alpha);
+  border-radius: 14px;
+  padding: 2.6rem 2.4rem 2.2rem;
+  min-height: 15rem;
+}
+/* Comilla decorativa */
+.quote::before {
+  content: "”";
+  position: absolute;
+  top: 0.35rem; left: 1.4rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--h-alpha);
+  opacity: 0.28;
+  pointer-events: none;
+}
+.quote p {
+  position: relative;
+  font-style: italic;
+  font-size: 1.12rem;
+  margin: 0;
+}
+.quote footer { display: grid; gap: 0.1rem; }
+.quote__who { font-family: var(--font-display); font-weight: 500; }
+.quote__where { color: var(--sand); }
+
+/* Controles */
+.carousel__controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+.carousel__arrow {
+  width: 40px; height: 40px;
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  background: none;
+  border: 1px solid rgba(242, 239, 230, 0.3);
+  border-radius: 999px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.carousel__arrow svg { width: 18px; height: 18px; }
+.carousel__arrow:hover { border-color: var(--h-beta); color: var(--h-beta); transform: translateY(-2px); }
+
+.carousel__dots { display: flex; align-items: center; gap: 0.5rem; }
+.carousel__dot {
+  width: 9px; height: 9px; padding: 0;
+  background: rgba(242, 239, 230, 0.3);
+  border: none; border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, width 0.25s ease;
+}
+.carousel__dot:hover { background: rgba(242, 239, 230, 0.6); }
+.carousel__dot.is-active { width: 26px; background: var(--h-alpha); }
+
+/* Con una sola reseña no tiene sentido mostrar controles */
+.carousel--single .carousel__controls { display: none; }
 
 /* ---------- Noticias ---------- */
 .news-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -363,14 +480,20 @@ h3 { font-size: 1.2rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .cols, .cards, .news-cols, .quotes { grid-template-columns: 1fr; }
+  .cols, .cards, .news-cols { grid-template-columns: 1fr; }
+  .quote { padding: 2.2rem 1.5rem 1.8rem; min-height: 0; }
+  .quote::before { left: 0.9rem; font-size: 4rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: 1fr; }
 
   .hero__grid { grid-template-columns: 1fr; text-align: left; }
   .hero__phi { order: -1; }
   .phi { width: min(220px, 60vw); }
+}
 
+/* El menú pasa a hamburguesa antes que el resto del diseño: con ocho enlaces
+   se parte en dos filas bajo los ~950 px y la barra queda del doble de alto. */
+@media (max-width: 960px) {
   .nav__toggle { display: block; }
   .nav__links {
     display: none;
@@ -572,3 +695,46 @@ body.day .icon-sun { display: block; }
 /* Modo día */
 body.day .value { background: #ffffff; border-color: rgba(0,0,0,0.12); border-left-color: var(--h-beta); }
 body.day .nosotros-cta { border-color: rgba(0,0,0,0.12); }
+
+/* ---------- Ponentes ---------- */
+.ponentes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.ponente {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  background: rgba(242, 239, 230, 0.04);
+  border: 1px solid rgba(242, 239, 230, 0.1);
+  border-left: 3px solid var(--h-beta);
+  border-radius: 12px;
+  padding: 1.2rem 1.3rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.5s ease;
+}
+.ponente:hover { transform: translateY(-3px); border-color: rgba(72, 201, 219, 0.5); border-left-color: var(--h-beta); }
+.ponente__name { font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; }
+.ponente__evento { color: var(--sand); }
+.ponente__casa { color: var(--sand); opacity: 0.85; }
+.ponente__nota { color: var(--h-alpha); }
+body.day .ponente { background: #ffffff; border-color: rgba(0, 0, 0, 0.12); border-left-color: var(--h-beta); }
+body.day .ponente:hover { border-color: rgba(142, 31, 43, 0.5); border-left-color: var(--h-beta); }
+
+/* Enlace a la página de ponentes, al final de la línea de tiempo */
+.eventos-link { margin-top: 2.5rem; }
+
+/* ---------- Carrusel en modo día ---------- */
+body.day .quote { background: #ffffff; border-color: rgba(0, 0, 0, 0.12); border-top-color: var(--h-alpha); }
+body.day .carousel__arrow { border-color: rgba(0, 0, 0, 0.2); }
+body.day .carousel__dot { background: rgba(0, 0, 0, 0.2); }
+body.day .carousel__dot:hover { background: rgba(0, 0, 0, 0.4); }
+body.day .carousel__dot.is-active { background: var(--h-alpha); }
+
+/* El carrusel también acompaña el cambio de tema */
+.quote, .carousel__arrow, .carousel__dot {
+  transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+.carousel__dot { transition: background 0.5s ease, width 0.25s ease; }

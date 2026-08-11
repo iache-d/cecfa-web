@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponentes — CECFA</title>
+  <meta name="description" content="Académicas y académicos que han dictado charlas magistrales, conversatorios y entrevistas en los eventos de CECFA.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script>
+    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
+    document.documentElement.classList.add('preload');
+    try {
+      if (localStorage.getItem('cecfa-theme') === 'day') {
+        document.documentElement.classList.add('day-preload');
+      }
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav" id="top">
+  <div class="nav__left">
+    <a class="nav__brand" href="index.html">
+      <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+        <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+      </svg>
+      <span class="nav__logo">CECFA</span>
+    </a>
+    <button class="theme-toggle" aria-label="Cambiar entre modo día y noche" title="Cambiar tema">
+          <svg class="theme-toggle__icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+          </svg>
+          <svg class="theme-toggle__icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/>
+              <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/>
+              <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+            </g>
+          </svg>
+        </button>
+  </div>
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav__links">
+    <a href="nosotros.html">Nosotros</a>
+    <a href="index.html#eventos">Eventos</a>
+    <a href="ponentes.html">Ponentes</a>
+    <a href="universidades.html">Universidades</a>
+    <a href="miembros.html">Miembros</a>
+    <a href="index.html#resenas">Reseñas</a>
+    <a href="noticias.html">Noticias</a>
+    <a class="nav__cta" href="index.html#inscripciones">Inscríbete</a>
+  </nav>
+</header>
+
+<div class="container page-head">
+  <p class="eyebrow mono">λ 486 nm · CECFA</p>
+  <h1>Han expuesto con nosotros</h1>
+</div>
+
+<!-- ============ PONENTES ============ -->
+<section class="section" id="ponentes">
+  <div class="container">
+
+    <p class="section__intro reveal">
+      Un reconocimiento a quienes han dictado charlas magistrales, conversatorios y
+      entrevistas en nuestros eventos. Todas y todos lo han hecho de forma voluntaria,
+      y sin ellos CECFA sencillamente no existiría.
+    </p>
+
+    <p class="muted reveal">
+      Esta lista reúne a los <strong>ponentes principales</strong> de cada instancia.
+      En cada congreso y workshop participa mucha más gente, talleres, mesas redondas,
+      paneles y presentaciones de estudiantes, de la que alcanza a figurar acá.
+    </p>
+
+    <!--
+      CÓMO EDITAR ESTA SECCIÓN:
+      - Una ficha por persona, no una por evento: si alguien expuso varias veces,
+        se agregan los eventos en la misma línea separados por " · ".
+      - Orden: alfabético por apellido, como en el resto de la página.
+      - Si más adelante quieren agregar la universidad, va en una tercera línea:
+        <span class="ponente__casa mono">Universidad</span>
+    -->
+
+    <h3 class="list-title reveal">Charlas magistrales y ponencias</h3>
+    <ul class="ponentes">
+      <li class="ponente reveal">
+        <span class="ponente__name">Claudia Aguilera</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Carolina Agurto</span>
+        <span class="ponente__evento mono">VI Congreso 2026 · V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Germán Alfaro</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Pía Amigo</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Trinidad Anriquez</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Hernán Astudillo</span>
+        <span class="ponente__evento mono">III Congreso 2017</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Gonzalo Avaria</span>
+        <span class="ponente__evento mono">V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Amelia Bayo</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Rafael Benguria</span>
+        <span class="ponente__evento mono">I Congreso 2012 · II Congreso 2014</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Graeme Candlish</span>
+        <span class="ponente__evento mono">III Congreso 2017</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Lucas Cieza</span>
+        <span class="ponente__evento mono">III Congreso 2017</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Francisco Claro</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Viviana Clavería</span>
+        <span class="ponente__evento mono">V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Saúl Contreras</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Tomás Corrales</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Omar Cuevas</span>
+        <span class="ponente__evento mono">III Congreso 2017 · V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Valeria del Campo</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Felipe Díaz</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Claudio Dib</span>
+        <span class="ponente__evento mono">I Congreso 2012 · IV Congreso 2019</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Arianna Dolfi</span>
+        <span class="ponente__evento mono">IV Workshop 2025</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Gonzalo Fuster</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Belford Galaz</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Mauricio Gamonal</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Carlos García</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Facundo Gómez</span>
+        <span class="ponente__evento mono">V Congreso 2024 · IV Workshop 2025</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Iván González</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dardo Goyeneche</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Mario Hamuy</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Carla Hermann</span>
+        <span class="ponente__evento mono">IV Congreso 2019 · VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Joaquín Hernández</span>
+        <span class="ponente__evento mono">III Workshop 2023</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Eduardo Ibar</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">José Ilić</span>
+        <span class="ponente__evento mono">IV Congreso 2019</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Yara Jaffé</span>
+        <span class="ponente__evento mono">V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Radostin Kurtev</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Juan Magaña</span>
+        <span class="ponente__evento mono">IV Congreso 2019</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Diego Maltrana</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">José Maza</span>
+        <span class="ponente__evento mono">II Congreso 2014</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Sebastián Mendizabal</span>
+        <span class="ponente__evento mono">III Workshop 2023</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Jean-Gabriel Minonzio</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Olivera Mišković</span>
+        <span class="ponente__evento mono">II Congreso 2014 · IV Congreso 2019</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Antonela Monachesi</span>
+        <span class="ponente__evento mono">IV Workshop 2025</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Antonio Montero</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Matías Montesinos</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Neil Nagar</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">César Núñez</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Rodrigo Olea</span>
+        <span class="ponente__evento mono">III Congreso 2017</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Julio Oliva</span>
+        <span class="ponente__evento mono">III Workshop 2023</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Walter Orellana</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Ignacio Ormazabal</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Diego Pallero</span>
+        <span class="ponente__evento mono">IV Workshop 2025</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Teresa Paneque</span>
+        <span class="ponente__evento mono">V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Darío Pérez</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Luis Roa</span>
+        <span class="ponente__evento mono">IV Congreso 2019</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Joel Saavedra</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dominik Schleicher</span>
+        <span class="ponente__evento mono">III Workshop 2023 · V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Ivan Schmidt</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__nota mono">In memoriam</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Matthias Schreiber</span>
+        <span class="ponente__evento mono">I Congreso 2012</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Claus Tappert</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Nicolás Tejos</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Patricia Tissera</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Sergio Torres</span>
+        <span class="ponente__evento mono">IV Workshop 2025</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Tomás Troncoso</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Germán Varas</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Felipe Veloso</span>
+        <span class="ponente__evento mono">VI Congreso 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Esteban Vera</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Francisco Vera</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Marisel Vergara</span>
+        <span class="ponente__evento mono">V Workshop 2026</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Nicolás Viaux</span>
+        <span class="ponente__evento mono">V Congreso 2024</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">José Villanueva</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Maja Vučković</span>
+        <span class="ponente__evento mono">II Congreso 2014</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Alfonso Zerwekh</span>
+        <span class="ponente__evento mono">II Congreso 2014 · VI Congreso 2026</span>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER / REDES ============ -->
+<footer class="footer" id="redes">
+  <div class="container footer__grid">
+    <div>
+      <p class="nav__logo">CECFA</p>
+      <p class="muted">Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas.<br>Asociación sin fines de lucro · Chile.</p>
+    </div>
+    <div>
+      <h3 class="list-title">Redes sociales</h3>
+      <ul class="social">
+        <li><a href="https://linktr.ee/CECFA" target="_blank" rel="noopener">Linktree</a></li>
+        <li><a href="https://www.instagram.com/org.cecfa/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCokgQROqjf627CBkJz0eyFw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Documentos</h3>
+      <ul class="social">
+        <li><a href="pagina-que-no-existe.html">Estatutos (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="spectrum spectrum--footer" aria-hidden="true">
+    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
+    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
+    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+  </div>
+  <p class="footer__legal mono">© 2026 CECFA</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

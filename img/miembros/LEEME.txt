@@ -1,0 +1,41 @@
+FOTOS DE MIEMBROS
+=================
+
+Cada foto va en esta carpeta con el nombre de la persona en minúsculas,
+sin tildes ni ñ, y con guiones en lugar de espacios:
+
+    Benjamín Gaete    ->  benjamin-gaete.jpg
+    Ayelen Aguilera   ->  ayelen-aguilera.jpg
+    César Gac         ->  cesar-gac.jpg
+
+Formato recomendado
+-------------------
+- .jpg o .png (si cambias de formato, hay que ajustar la extensión
+  en la línea <img> de miembros.html)
+- Cuadrada (mismo alto que ancho). La página la recorta en círculo,
+  así que conviene que la cara quede centrada.
+- 400 x 400 píxeles es más que suficiente. Más grande solo hace la
+  página más lenta.
+- Bajo 200 KB por foto idealmente.
+
+Si una foto todavía no existe
+-----------------------------
+No pasa nada: la página detecta que falta y muestra la silueta gris
+(img/placeholder-avatar.svg) en su lugar. Puedes dejar la línea <img>
+escrita en miembros.html y subir el archivo cuando lo tengas.
+
+Estado actual
+-------------
+
+Ya subidas:
+    benjamin-gaete.png     (Directiva)
+    ignacio-diaz.png       (Directiva)
+    clemente-velasco.png   (Líderes de comisión)
+
+Faltan (la página ya las está esperando con estos nombres):
+    gustavo-gonzalez.jpg   (Directiva)
+    isabella-perez.jpg     (Directiva)
+    ayelen-aguilera.jpg    (Líderes de comisión)
+    carlos-cruz.jpg        (Líderes de comisión)
+    cesar-gac.jpg          (Líderes de comisión)
+    juan-toledo.jpg        (Líderes de comisión)

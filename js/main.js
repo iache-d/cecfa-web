@@ -9,25 +9,19 @@
 
 
 
-// Respeta la preferencia del sistema operativo: quien tenga activado "reducir
-// movimiento" recibe la version estatica del sitio, sin estrellas animadas,
-// sin revelados al hacer scroll y sin contadores que suben solos.
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+const reduceMotion = false;
 // ===== 1. Menú móvil =====
 const toggle = document.querySelector('.nav__toggle');
 const links = document.querySelector('.nav__links');
 
-if (toggle && links) {
-  toggle.addEventListener('click', () => {
-    const open = links.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', open);
-  });
+toggle.addEventListener('click', () => {
+  const open = links.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded', open);
+});
 
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => links.classList.remove('is-open'))
-  );
-}
+links.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => links.classList.remove('is-open'))
+);
 
 // ===== 2. Scroll suave =====
 // Interceptamos los clicks en links internos (#...) y animamos el scroll
@@ -135,43 +129,16 @@ if (canvas) {
     requestAnimationFrame(drawFrame);
   }
 
-  // Version estatica: mismas estrellas, sin parpadeo ni deriva. Se redibuja solo
-  // cuando cambia lo que se ve (scroll, resize o cambio de tema).
-  function drawStatic() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (document.body.classList.contains('day')) return;
-
-    const offsetY = window.scrollY;
-    for (const s of stars) {
-      const screenY = s.y - offsetY;
-      if (screenY < -10 || screenY > canvas.height + 10) continue;
-      ctx.fillStyle = 'rgba(242, 239, 230, 0.75)';
-      ctx.beginPath();
-      ctx.arc(s.x, screenY, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-
-  // Permite que el interruptor de tema pida un redibujado en modo estatico.
-  canvas.redibujar = drawStatic;
-
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     makeStars();
-    if (reduceMotion) drawStatic();
   }
 
   window.addEventListener('resize', resize);
   window.addEventListener('load', resize);
   resize();
-
-  if (reduceMotion) {
-    window.addEventListener('scroll', drawStatic, { passive: true });
-    drawStatic();
-  } else {
-    requestAnimationFrame(drawFrame);
-  }
+  requestAnimationFrame(drawFrame);
 }
 
 // ===== 4. Revelado al hacer scroll =====
@@ -316,11 +283,7 @@ const themeToggle = document.querySelector('.theme-toggle');
 if (themeToggle) {
   function setTheme(isDay) {
     document.body.classList.toggle('day', isDay);
-
-    // En modo estatico no hay bucle de animacion que repinte el cielo, asi que
-    // se pide el redibujado explicitamente al cambiar de tema.
-    if (reduceMotion && canvas && canvas.redibujar) canvas.redibujar();
-
+    
     try { localStorage.setItem('cecfa-theme', isDay ? 'day' : 'night'); } catch (e) {}
   }
 
@@ -345,3 +308,148 @@ if (themeToggle) {
     setTheme(!document.body.classList.contains('day'));
   });
 }
+
+// ===== 9. Carrusel =====
+// Funciona con cualquier bloque que tenga data-carousel. La ventana hace
+// scroll con scroll-snap (así el deslizar con el dedo sale gratis) y el JS
+// solo se encarga de las flechas, los puntitos y el avance automático.
+document.querySelectorAll('[data-carousel]').forEach(setupCarousel);
+
+function setupCarousel(root) {
+  const viewport = root.querySelector('.carousel__viewport');
+  const slides = Array.from(root.querySelectorAll('.carousel__slide'));
+  const dotsWrap = root.querySelector('[data-carousel-dots]');
+  const btnPrev = root.querySelector('[data-carousel-prev]');
+  const btnNext = root.querySelector('[data-carousel-next]');
+
+  if (!viewport || slides.length === 0) return;
+
+  // Con una sola lámina no hay nada que recorrer
+  if (slides.length === 1) {
+    root.classList.add('carousel--single');
+    return;
+  }
+
+  let index = 0;
+
+  slides.forEach((slide, i) => {
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'diapositiva');
+    slide.setAttribute('aria-label', `${i + 1} de ${slides.length}`);
+  });
+
+  // Puntitos: uno por lámina
+  const dots = slides.map((_, i) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel__dot';
+    dot.setAttribute('aria-label', `Ir a la ${i + 1}`);
+    dot.addEventListener('click', () => { goTo(i); restart(); });
+    if (dotsWrap) dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  function paint() {
+    dots.forEach((dot, i) => {
+      const active = i === index;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+
+  function goTo(i, smooth = true) {
+    index = (i + slides.length) % slides.length;
+    const left = slides[index].offsetLeft - slides[0].offsetLeft;
+    viewport.scrollTo({ left, behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
+    paint();
+  }
+
+  // Si se desliza con el dedo o el trackpad, sincronizamos el punto activo
+  let scrollTimer;
+  viewport.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const base = slides[0].offsetLeft;
+      let closest = 0;
+      let min = Infinity;
+      slides.forEach((slide, i) => {
+        const dist = Math.abs((slide.offsetLeft - base) - viewport.scrollLeft);
+        if (dist < min) { min = dist; closest = i; }
+      });
+      index = closest;
+      paint();
+    }, 90);
+  }, { passive: true });
+
+  if (btnPrev) btnPrev.addEventListener('click', () => { goTo(index - 1); restart(); });
+  if (btnNext) btnNext.addEventListener('click', () => { goTo(index + 1); restart(); });
+
+  // Flechas del teclado cuando el carrusel tiene el foco
+  viewport.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); restart(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); goTo(index - 1); restart(); }
+  });
+
+  // ---- Avance automático ----
+  // Se pausa al pasar el mouse, al enfocar con teclado, al cambiar de pestaña
+  // y mientras el carrusel no esté a la vista.
+  const delay = parseInt(root.dataset.autoplay, 10) || 0;
+  let timer = null;
+  let onScreen = true;
+
+  function play() {
+    if (!delay || reduceMotion || timer || !onScreen) return;
+    timer = setInterval(() => goTo(index + 1), delay);
+  }
+  function stop() {
+    clearInterval(timer);
+    timer = null;
+  }
+  function restart() { stop(); play(); }
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', play);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', play);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else play();
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      onScreen = entries[0].isIntersecting;
+      if (onScreen) play(); else stop();
+    }, { threshold: 0.25 }).observe(root);
+  }
+
+  // Al cambiar el ancho de la ventana, reencuadramos la lámina actual
+  window.addEventListener('resize', () => goTo(index, false));
+
+  paint();
+  play();
+}
+
+// ===== 10. Fotos de miembros que todavía no existen =====
+// Si el archivo de img/miembros/ aún no está subido, mostramos la silueta
+// gris en vez de un ícono de imagen rota. El evento 'error' no burbujea,
+// por eso lo escuchamos en fase de captura.
+function ponerSilueta(img) {
+  if (img.dataset.fallback) return;
+  img.dataset.fallback = '1';
+  img.src = 'img/placeholder-avatar.svg';
+}
+
+document.addEventListener('error', e => {
+  const img = e.target;
+  if (img.tagName === 'IMG' && img.classList.contains('person__photo')) ponerSilueta(img);
+}, true);
+
+// Las fotos que ya fallaron antes de que este archivo se ejecutara no
+// alcanzan a disparar el evento, así que las revisamos a mano.
+function revisarFotos() {
+  document.querySelectorAll('.person__photo').forEach(img => {
+    if (img.complete && img.naturalWidth === 0) ponerSilueta(img);
+  });
+}
+revisarFotos();
+window.addEventListener('load', revisarFotos);
