@@ -3,16 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Nosotros — CECFA</title>
   <meta name="description" content="Propósito, principios y valores de CECFA, la Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas de Chile.">
-  <script>
-    document.documentElement.classList.add('preload');
-    try {
-      if (localStorage.getItem('cecfa-theme') === 'day') {
-        document.documentElement.classList.add('day-preload');
-      }
-    } catch (e) {}
-  </script>
+  <script src="js/tema.js"></script>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,9 +158,9 @@
     </div>
   </div>
   <div class="spectrum spectrum--footer" aria-hidden="true">
-    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
-    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
-    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+    <span class="spectrum__line spectrum__line--gamma"></span>
+    <span class="spectrum__line spectrum__line--beta"></span>
+    <span class="spectrum__line spectrum__line--alpha"></span>
   </div>
   <p class="footer__legal mono">© 2026 CECFA</p>
 </footer>

@@ -3,21 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>CECFA — Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas</title>
   <meta name="description" content="CECFA: Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas. Congresos, workshops y divulgación científica a nivel nacional en Chile.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>
-    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
-    document.documentElement.classList.add('preload');
-    try {
-      if (localStorage.getItem('cecfa-theme') === 'day') {
-        document.documentElement.classList.add('day-preload');
-      }
-    } catch (e) {}
-  </script>
+  <script src="js/tema.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -116,9 +109,9 @@
   </div>
 
   <div class="spectrum" aria-hidden="true">
-    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
-    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
-    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+    <span class="spectrum__line spectrum__line--gamma"></span>
+    <span class="spectrum__line spectrum__line--beta"></span>
+    <span class="spectrum__line spectrum__line--alpha"></span>
   </div>
 </section>
 
@@ -261,7 +254,7 @@
         <span class="timeline__year mono">2018</span>
         <div>
           <strong>I Workshop</strong>
-          <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín.</p>
+          <p>7 de abril · Pontificia Universidad Católica de Chile, campus San Joaquín. Nació de las propuestas levantadas por las bases en el III Congreso y fue el primer evento de CECFA con un formato distinto al del congreso.</p>
         </div>
         <a class="timeline__poster" href="img/posters/i-workshop-2018.jpg" target="_blank" rel="noopener">
           <img src="img/posters/i-workshop-2018.jpg" alt="Afiche del I Workshop CECFA" loading="lazy">
@@ -396,9 +389,9 @@
     </div>
   </div>
   <div class="spectrum spectrum--footer" aria-hidden="true">
-    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
-    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
-    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+    <span class="spectrum__line spectrum__line--gamma"></span>
+    <span class="spectrum__line spectrum__line--beta"></span>
+    <span class="spectrum__line spectrum__line--alpha"></span>
   </div>
   <p class="footer__legal mono">© 2026 CECFA</p>
 </footer>

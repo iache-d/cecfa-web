@@ -3,21 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Página no encontrada — CECFA</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>
-    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
-    document.documentElement.classList.add('preload');
-    try {
-      if (localStorage.getItem('cecfa-theme') === 'day') {
-        document.documentElement.classList.add('day-preload');
-      }
-    } catch (e) {}
-  </script>
+  <script src="js/tema.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>

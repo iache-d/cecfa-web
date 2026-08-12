@@ -3,21 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <title>Ponentes — CECFA</title>
   <meta name="description" content="Académicas y académicos que han dictado charlas magistrales, conversatorios y entrevistas en los eventos de CECFA.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script>
-    // Aplica el tema guardado antes de pintar, para evitar el parpadeo
-    document.documentElement.classList.add('preload');
-    try {
-      if (localStorage.getItem('cecfa-theme') === 'day') {
-        document.documentElement.classList.add('day-preload');
-      }
-    } catch (e) {}
-  </script>
+  <script src="js/tema.js"></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -97,289 +90,359 @@
     <h3 class="list-title reveal">Charlas magistrales y ponencias</h3>
     <ul class="ponentes">
       <li class="ponente reveal">
-        <span class="ponente__name">Claudia Aguilera</span>
+        <span class="ponente__name">Dra. Claudia Aguilera</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Carolina Agurto</span>
+        <span class="ponente__name">Dra. Carolina Agurto</span>
         <span class="ponente__evento mono">VI Congreso 2026 · V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Germán Alfaro</span>
+        <span class="ponente__name">Dr. Germán Alfaro</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Pía Amigo</span>
+        <span class="ponente__name">Dra. Pía Amigo</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Trinidad Anriquez</span>
+        <span class="ponente__name">Ing. Trinidad Anriquez</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Hernán Astudillo</span>
+        <span class="ponente__name">Dr. Hernán Astudillo</span>
         <span class="ponente__evento mono">III Congreso 2017</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Gonzalo Avaria</span>
+        <span class="ponente__name">Dr. Gonzalo Avaria</span>
         <span class="ponente__evento mono">V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Amelia Bayo</span>
+        <span class="ponente__name">Dra. Amelia Bayo</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Rafael Benguria</span>
+        <span class="ponente__name">Dr. Rafael Benguria</span>
         <span class="ponente__evento mono">I Congreso 2012 · II Congreso 2014</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Graeme Candlish</span>
+        <span class="ponente__name">Dr. Graeme Candlish</span>
         <span class="ponente__evento mono">III Congreso 2017</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Lucas Cieza</span>
+        <span class="ponente__name">Dr. Lucas Cieza</span>
         <span class="ponente__evento mono">III Congreso 2017</span>
+        <span class="ponente__casa mono">Universidad Diego Portales</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Francisco Claro</span>
+        <span class="ponente__name">Dr. Francisco Claro</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Viviana Clavería</span>
+        <span class="ponente__name">Dra. Viviana Clavería</span>
         <span class="ponente__evento mono">V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad de Letonia</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Saúl Contreras</span>
+        <span class="ponente__name">Dr. Saúl Contreras</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Universidad de Santiago de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Tomás Corrales</span>
+        <span class="ponente__name">Dr. Tomás Corrales</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Omar Cuevas</span>
+        <span class="ponente__name">Dr. (c) Omar Cuevas</span>
         <span class="ponente__evento mono">III Congreso 2017 · V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Valeria del Campo</span>
+        <span class="ponente__name">Dra. Valeria del Campo</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Felipe Díaz</span>
+        <span class="ponente__name">Dr. Felipe Díaz</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad Andrés Bello</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Claudio Dib</span>
+        <span class="ponente__name">Dr. Claudio Dib</span>
         <span class="ponente__evento mono">I Congreso 2012 · IV Congreso 2019</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Arianna Dolfi</span>
+        <span class="ponente__name">Dra. Arianna Dolfi</span>
         <span class="ponente__evento mono">IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad de La Serena</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Gonzalo Fuster</span>
+        <span class="ponente__name">Dr. Gonzalo Fuster</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Belford Galaz</span>
+        <span class="ponente__name">Dr. Belford Galaz</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Santiago de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Mauricio Gamonal</span>
+        <span class="ponente__name">Dr. Mauricio Gamonal</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad Estatal de Pensilvania</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Carlos García</span>
+        <span class="ponente__name">Dr. Carlos García</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Facundo Gómez</span>
+        <span class="ponente__name">Dr. Facundo Gómez</span>
         <span class="ponente__evento mono">V Congreso 2024 · IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad de La Serena</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Iván González</span>
+        <span class="ponente__name">Dr. Iván González</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Dardo Goyeneche</span>
+        <span class="ponente__name">Dr. Dardo Goyeneche</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Mario Hamuy</span>
+        <span class="ponente__name">Dr. Mario Hamuy</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Universidad de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Carla Hermann</span>
+        <span class="ponente__name">Dra. Carla Hermann</span>
         <span class="ponente__evento mono">IV Congreso 2019 · VI Congreso 2026</span>
+        <span class="ponente__casa mono">Universidad de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Joaquín Hernández</span>
+        <span class="ponente__name">Dr. (c) Joaquín Hernández</span>
         <span class="ponente__evento mono">III Workshop 2023</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Eduardo Ibar</span>
+        <span class="ponente__name">Dr. Eduardo Ibar</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">José Ilić</span>
+        <span class="ponente__name">Mg. José Ilić</span>
         <span class="ponente__evento mono">IV Congreso 2019</span>
+        <span class="ponente__casa mono">Divulgador científico independiente</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Yara Jaffé</span>
+        <span class="ponente__name">Dra. Yara Jaffé</span>
         <span class="ponente__evento mono">V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Radostin Kurtev</span>
+        <span class="ponente__name">Dr. Radostin Kurtev</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Juan Magaña</span>
+        <span class="ponente__name">Dr. Juan Magaña</span>
         <span class="ponente__evento mono">IV Congreso 2019</span>
+        <span class="ponente__casa mono">Universidad Central de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Diego Maltrana</span>
+        <span class="ponente__name">Dr. Diego Maltrana</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">José Maza</span>
+        <span class="ponente__name">Dr. José Maza</span>
         <span class="ponente__evento mono">II Congreso 2014</span>
+        <span class="ponente__casa mono">Universidad de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Sebastián Mendizabal</span>
+        <span class="ponente__name">Dr. Sebastián Mendizabal</span>
         <span class="ponente__evento mono">III Workshop 2023</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Jean-Gabriel Minonzio</span>
+        <span class="ponente__name">Dr. Jean-Gabriel Minonzio</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Olivera Mišković</span>
+        <span class="ponente__name">Dra. Olivera Mišković</span>
         <span class="ponente__evento mono">II Congreso 2014 · IV Congreso 2019</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Antonela Monachesi</span>
+        <span class="ponente__name">Dra. Antonela Monachesi</span>
         <span class="ponente__evento mono">IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad de La Serena</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Antonio Montero</span>
+        <span class="ponente__name">Dr. Antonio Montero</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Matías Montesinos</span>
+        <span class="ponente__name">Dr. Matías Montesinos</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Neil Nagar</span>
+        <span class="ponente__name">Dr. Neil Nagar</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">César Núñez</span>
+        <span class="ponente__name">Dr. César Núñez</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Rodrigo Olea</span>
+        <span class="ponente__name">Dr. Rodrigo Olea</span>
         <span class="ponente__evento mono">III Congreso 2017</span>
+        <span class="ponente__casa mono">Universidad Andrés Bello</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Julio Oliva</span>
+        <span class="ponente__name">Dr. Julio Oliva</span>
         <span class="ponente__evento mono">III Workshop 2023</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Walter Orellana</span>
+        <span class="ponente__name">Dr. Walter Orellana</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad Andrés Bello</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Ignacio Ormazabal</span>
+        <span class="ponente__name">Dr. Ignacio Ormazabal</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad del Desarrollo</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Diego Pallero</span>
+        <span class="ponente__name">Dr. Diego Pallero</span>
         <span class="ponente__evento mono">IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Teresa Paneque</span>
+        <span class="ponente__name">Dra. Teresa Paneque</span>
         <span class="ponente__evento mono">V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad de Michigan</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Darío Pérez</span>
+        <span class="ponente__name">Dr. Darío Pérez</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Luis Roa</span>
+        <span class="ponente__name">Dr. Luis Roa</span>
         <span class="ponente__evento mono">IV Congreso 2019</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Joel Saavedra</span>
+        <span class="ponente__name">Dr. Joel Saavedra</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Dominik Schleicher</span>
+        <span class="ponente__name">Dr. Dominik Schleicher</span>
         <span class="ponente__evento mono">III Workshop 2023 · V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad Sapienza de Roma</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Ivan Schmidt</span>
+        <span class="ponente__name">Dr. Ivan Schmidt</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
         <span class="ponente__nota mono">In memoriam</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Matthias Schreiber</span>
+        <span class="ponente__name">Dr. Matthias Schreiber</span>
         <span class="ponente__evento mono">I Congreso 2012</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Claus Tappert</span>
+        <span class="ponente__name">Dr. Claus Tappert</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Nicolás Tejos</span>
+        <span class="ponente__name">Dr. Nicolás Tejos</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Patricia Tissera</span>
+        <span class="ponente__name">Dra. Patricia Tissera</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Sergio Torres</span>
+        <span class="ponente__name">Dr. Sergio Torres</span>
         <span class="ponente__evento mono">IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad de La Serena</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Tomás Troncoso</span>
+        <span class="ponente__name">Lic. Tomás Troncoso</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Germán Varas</span>
+        <span class="ponente__name">Dr. Germán Varas</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Felipe Veloso</span>
+        <span class="ponente__name">Dr. Felipe Veloso</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Esteban Vera</span>
+        <span class="ponente__name">Dr. Esteban Vera</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Francisco Vera</span>
+        <span class="ponente__name">Dr. Francisco Vera</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Marisel Vergara</span>
+        <span class="ponente__name">Lic. Marisel Vergara</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Nicolás Viaux</span>
+        <span class="ponente__name">Dr. Nicolás Viaux</span>
         <span class="ponente__evento mono">V Congreso 2024</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">José Villanueva</span>
+        <span class="ponente__name">Dr. José Villanueva</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Maja Vučković</span>
+        <span class="ponente__name">Dra. Maja Vučković</span>
         <span class="ponente__evento mono">II Congreso 2014</span>
+        <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Alfonso Zerwekh</span>
+        <span class="ponente__name">Dr. Alfonso Zerwekh</span>
         <span class="ponente__evento mono">II Congreso 2014 · VI Congreso 2026</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
     </ul>
 
@@ -410,9 +473,9 @@
     </div>
   </div>
   <div class="spectrum spectrum--footer" aria-hidden="true">
-    <span class="spectrum__line" style="--pos: 18%; --c: var(--h-gamma);"></span>
-    <span class="spectrum__line" style="--pos: 34%; --c: var(--h-beta);"></span>
-    <span class="spectrum__line" style="--pos: 78%; --c: var(--h-alpha);"></span>
+    <span class="spectrum__line spectrum__line--gamma"></span>
+    <span class="spectrum__line spectrum__line--beta"></span>
+    <span class="spectrum__line spectrum__line--alpha"></span>
   </div>
   <p class="footer__legal mono">© 2026 CECFA</p>
 </footer>

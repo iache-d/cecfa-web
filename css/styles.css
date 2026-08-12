@@ -207,6 +207,12 @@ h3 { font-size: 1.2rem; }
   background: var(--c);
   box-shadow: 0 0 12px var(--c);
 }
+/* Las tres líneas del hidrógeno. Antes iban como style="" en el HTML;
+   se pasaron a clases para poder prohibir los estilos inline en la
+   política de seguridad (ver el <meta> de cada página). */
+.spectrum__line--gamma { --pos: 18%; --c: var(--h-gamma); }
+.spectrum__line--beta  { --pos: 34%; --c: var(--h-beta); }
+.spectrum__line--alpha { --pos: 78%; --c: var(--h-alpha); }
 
 /* ---------- Secciones ---------- */
 .section { padding: 5.5rem 0; }
