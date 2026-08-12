@@ -287,14 +287,28 @@ if (themeToggle) {
     try { localStorage.setItem('cecfa-theme', isDay ? 'day' : 'night'); } catch (e) {}
   }
 
-  // Al cargar, aplica la preferencia guardada (noche por defecto)
-  // Al cargar, aplica la preferencia guardada (noche por defecto).
-  // Ya venía aplicada por el script del <head>; aquí solo sincronizamos
-  // la clase del body y el ícono, y retiramos la clase puente.
-  let saved = 'night';
-  try { saved = localStorage.getItem('cecfa-theme') || 'night'; } catch (e) {}
-  document.body.classList.toggle('day', saved === 'day');
-  
+  // Al cargar: si la persona ya eligió un tema con el interruptor se respeta;
+  // si nunca eligió, se sigue lo que tenga puesto su navegador o su sistema.
+  // El script del <head> (js/tema.js) ya aplicó esto mismo antes de pintar;
+  // acá solo sincronizamos la clase del body y sacamos la clase puente.
+  const modoClaroDelSistema = window.matchMedia('(prefers-color-scheme: light)');
+
+  function temaElegido() {
+    try { return localStorage.getItem('cecfa-theme'); } catch (e) { return null; }
+  }
+
+  const elegido = temaElegido();
+  document.body.classList.toggle(
+    'day',
+    elegido ? elegido === 'day' : modoClaroDelSistema.matches
+  );
+
+  // Si todavía no ha elegido nada, seguimos los cambios del sistema en vivo
+  // (por ejemplo, cuando el equipo pasa solo a modo oscuro al anochecer).
+  modoClaroDelSistema.addEventListener('change', e => {
+    if (!temaElegido()) document.body.classList.toggle('day', e.matches);
+  });
+
   document.documentElement.classList.remove('day-preload');
   // Reactiva las transiciones una vez aplicado el tema inicial
   // Reactiva las transiciones una vez que la página cargó del todo.
