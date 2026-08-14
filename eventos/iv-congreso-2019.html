@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <title>IV Congreso Nacional 2019 — CECFA</title>
+  <meta name="description" content="IV Congreso Nacional de CECFA, 7 – 9 de agosto de 2019. Universidad de Concepción · Concepción">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+
+<header class="nav" id="top">
+  <div class="nav__left">
+    <a class="nav__brand" href="../index.html">
+      <svg class="nav__phi" viewBox="0 0 40 40" aria-hidden="true">
+        <text x="20" y="30" text-anchor="middle" font-size="30" fill="currentColor" font-family="Georgia, serif">φ</text>
+      </svg>
+      <span class="nav__logo">CECFA</span>
+    </a>
+    <button class="theme-toggle" aria-label="Cambiar entre modo día y noche" title="Cambiar tema">
+          <svg class="theme-toggle__icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+          </svg>
+          <svg class="theme-toggle__icon icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.2" y1="4.2" x2="5.6" y2="5.6"/>
+              <line x1="18.4" y1="18.4" x2="19.8" y2="19.8"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"/>
+              <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"/>
+            </g>
+          </svg>
+        </button>
+  </div>
+  <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <nav class="nav__links">
+    <a href="../nosotros.html">Nosotros</a>
+    <a href="../index.html#eventos">Eventos</a>
+    <a href="../ponentes.html">Ponentes</a>
+    <a href="../universidades.html">Universidades</a>
+    <a href="../miembros.html">Miembros</a>
+    <a href="../index.html#resenas">Reseñas</a>
+    <a href="../noticias.html">Noticias</a>
+    <a class="nav__cta" href="../index.html#inscripciones">Inscríbete</a>
+  </nav>
+</header>
+
+<div class="container page-head">
+  <p class="eyebrow mono">λ 656 nm · Eventos</p>
+  <h1>IV Congreso Nacional</h1>
+  <p class="evento__meta mono">7 – 9 de agosto de 2019<br>Universidad de Concepción · Concepción</p>
+</div>
+
+<section class="section" id="evento">
+  <div class="container">
+
+    <div class="evento__cabecera reveal">
+      <a class="evento__afiche" href="../img/posters/iv-congreso-2019.jpg" target="_blank" rel="noopener">
+        <img src="../img/posters/iv-congreso-2019.jpg" alt="Afiche del IV Congreso Nacional">
+      </a>
+      <div>
+        <h2>Sobre el evento</h2>
+        <p class="prose">
+          <!-- ESCRIBIR: de qué se trató, cuánta gente asistió, qué se hizo.
+               Mientras tanto queda este texto genérico. -->
+          Instancia organizada por CECFA junto a las y los estudiantes de la sede
+          anfitriona. Pronto contaremos más sobre cómo se vivió.
+        </p>
+      </div>
+    </div>
+
+    <h3 class="list-title reveal">Quienes expusieron</h3>
+    <ul class="ponentes">
+      <li class="ponente reveal">
+        <span class="ponente__name">Dr. Claudio Dib</span>
+        <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dr. Juan Magaña</span>
+        <span class="ponente__casa mono">Universidad Central de Chile</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dr. Luis Roa</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dra. Carla Hermann</span>
+        <span class="ponente__casa mono">Universidad de Chile</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dra. Olivera Mišković</span>
+        <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Mg. José Ilić</span>
+      </li>
+    </ul>
+
+    <h3 class="list-title reveal">Fotos</h3>
+    <!--
+      FOTOS. Van en img/eventos/iv-congreso-2019/ y se agregan reemplazando el párrafo
+      de abajo por:  <ul class="galeria"><li><img src="../img/eventos/iv-congreso-2019/x.jpg" alt="..."></li></ul>
+      Pídele a redes: 1 horizontal de portada, 1 grupal, 2-3 de charlas,
+      1-2 del público, 2-3 de talleres, 2-3 informales y 1 de la sede.
+    -->
+    <p class="muted reveal">Todavía no publicamos las fotos de este evento. Si participaste y tienes, escríbenos por <a href="../contacto.html">contacto</a>.</p>
+
+    <p class="eventos-link reveal"><a href="../index.html#eventos">← Volver a todos los eventos</a></p>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER / REDES ============ -->
+<footer class="footer" id="redes">
+  <div class="container footer__grid">
+    <div>
+      <p class="nav__logo">CECFA</p>
+      <p class="muted">Coordinadora de Estudiantes de Ciencias Físicas y Astronómicas.<br>Asociación sin fines de lucro · Chile.</p>
+    </div>
+    <div>
+      <h3 class="list-title">Redes sociales</h3>
+      <ul class="social">
+        <li><a href="https://linktr.ee/CECFA" target="_blank" rel="noopener">Linktree</a></li>
+        <li><a href="https://www.instagram.com/org.cecfa/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCokgQROqjf627CBkJz0eyFw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="../contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="list-title">Documentos</h3>
+      <ul class="social">
+        <li><a href="../pagina-que-no-existe.html">Estatutos (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="spectrum spectrum--footer" aria-hidden="true">
+    <span class="spectrum__line spectrum__line--gamma"></span>
+    <span class="spectrum__line spectrum__line--beta"></span>
+    <span class="spectrum__line spectrum__line--alpha"></span>
+  </div>
+  <p class="footer__legal mono">© 2026 CECFA</p>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -72,22 +72,29 @@
       y sin ellos CECFA sencillamente no existiría.
     </p>
 
-    <p class="muted reveal">
-      Esta lista reúne a los <strong>ponentes principales</strong> de cada instancia.
-      En cada congreso y workshop participa mucha más gente, talleres, mesas redondas,
-      paneles y presentaciones de estudiantes, de la que alcanza a figurar acá.
-    </p>
-
     <!--
       CÓMO EDITAR ESTA SECCIÓN:
-      - Una ficha por persona, no una por evento: si alguien expuso varias veces,
-        se agregan los eventos en la misma línea separados por " · ".
-      - Orden: alfabético por apellido, como en el resto de la página.
-      - Si más adelante quieren agregar la universidad, va en una tercera línea:
-        <span class="ponente__casa mono">Universidad</span>
+      - Una sola lista, alfabética por apellido. Una ficha por persona.
+      - Los eventos de cada quien van en su propia ficha, separados por " · ".
+        Quien expuso varias veces aparece UNA vez, con todos sus eventos.
+      - El buscador de arriba se llena solo con las universidades y los eventos
+        que encuentra en la lista, así que no hay que tocarlo al agregar gente.
     -->
 
-    <h3 class="list-title reveal">Charlas magistrales y ponencias</h3>
+    <div class="filtros reveal">
+      <input class="filtros__buscar" type="search" id="buscar-ponente"
+             placeholder="Buscar por nombre, universidad o evento…"
+             aria-label="Buscar ponentes">
+      <select class="filtros__select" id="filtro-universidad" aria-label="Filtrar por universidad">
+        <option value="">Todas las universidades</option>
+      </select>
+      <select class="filtros__select" id="filtro-evento" aria-label="Filtrar por evento">
+        <option value="">Todos los eventos</option>
+      </select>
+      <button class="filtros__limpiar" type="button" id="limpiar-filtros" hidden>Limpiar</button>
+      <p class="filtros__cuenta mono" aria-live="polite"></p>
+    </div>
+
     <ul class="ponentes">
       <li class="ponente reveal">
         <span class="ponente__name">Dra. Claudia Aguilera</span>
@@ -174,14 +181,14 @@
         <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Dr. Felipe Díaz</span>
-        <span class="ponente__evento mono">II Workshop 2018</span>
-        <span class="ponente__casa mono">Universidad Andrés Bello</span>
-      </li>
-      <li class="ponente reveal">
         <span class="ponente__name">Dr. Claudio Dib</span>
         <span class="ponente__evento mono">I Congreso 2012 · IV Congreso 2019</span>
         <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dr. Felipe Díaz</span>
+        <span class="ponente__evento mono">II Workshop 2018</span>
+        <span class="ponente__casa mono">Universidad Andrés Bello</span>
       </li>
       <li class="ponente reveal">
         <span class="ponente__name">Dra. Arianna Dolfi</span>
@@ -209,11 +216,6 @@
         <span class="ponente__casa mono">Universidad Técnica Federico Santa María</span>
       </li>
       <li class="ponente reveal">
-        <span class="ponente__name">Dr. Facundo Gómez</span>
-        <span class="ponente__evento mono">V Congreso 2024 · IV Workshop 2025</span>
-        <span class="ponente__casa mono">Universidad de La Serena</span>
-      </li>
-      <li class="ponente reveal">
         <span class="ponente__name">Dr. Iván González</span>
         <span class="ponente__evento mono">II Workshop 2018</span>
         <span class="ponente__casa mono">Universidad de Valparaíso</span>
@@ -222,6 +224,11 @@
         <span class="ponente__name">Dr. Dardo Goyeneche</span>
         <span class="ponente__evento mono">VI Congreso 2026</span>
         <span class="ponente__casa mono">Pontificia Universidad Católica de Chile</span>
+      </li>
+      <li class="ponente reveal">
+        <span class="ponente__name">Dr. Facundo Gómez</span>
+        <span class="ponente__evento mono">V Congreso 2024 · IV Workshop 2025</span>
+        <span class="ponente__casa mono">Universidad de La Serena</span>
       </li>
       <li class="ponente reveal">
         <span class="ponente__name">Dr. Mario Hamuy</span>
@@ -246,7 +253,6 @@
       <li class="ponente reveal">
         <span class="ponente__name">Mg. José Ilić</span>
         <span class="ponente__evento mono">IV Congreso 2019</span>
-        <span class="ponente__casa mono">Divulgador científico independiente</span>
       </li>
       <li class="ponente reveal">
         <span class="ponente__name">Dra. Yara Jaffé</span>
@@ -259,6 +265,11 @@
         <span class="ponente__casa mono">Universidad de Valparaíso</span>
       </li>
       <li class="ponente reveal">
+        <span class="ponente__name">Dra. Mary Loli Martínez</span>
+        <span class="ponente__evento mono">III Workshop 2023</span>
+        <span class="ponente__casa mono">Universidad de Concepción</span>
+      </li>
+      <li class="ponente reveal">
         <span class="ponente__name">Dr. Juan Magaña</span>
         <span class="ponente__evento mono">IV Congreso 2019</span>
         <span class="ponente__casa mono">Universidad Central de Chile</span>
@@ -267,11 +278,6 @@
         <span class="ponente__name">Dr. Diego Maltrana</span>
         <span class="ponente__evento mono">V Workshop 2026</span>
         <span class="ponente__casa mono">Pontificia Universidad Católica de Valparaíso</span>
-      </li>
-      <li class="ponente reveal">
-        <span class="ponente__name">Dra. Mary Loli Martínez</span>
-        <span class="ponente__evento mono">III Workshop 2023</span>
-        <span class="ponente__casa mono">Universidad de Concepción</span>
       </li>
       <li class="ponente reveal">
         <span class="ponente__name">Dr. José Maza</span>

@@ -443,7 +443,145 @@ function setupCarousel(root) {
   play();
 }
 
-// ===== 10. Fotos de miembros que todavía no existen =====
+// ===== 10. Mapa de universidades =====
+// Dos comportamientos que el CSS solo no puede resolver, porque hay que
+// encender elementos que están en otra rama del SVG:
+//   - al destacar una universidad se ilumina la región donde está;
+//   - al pasar por un punto compartido (Valparaíso, Santiago) se encienden
+//     TODAS las universidades de esa ciudad, no una elegida al azar.
+const mapa = document.querySelector('.mapa');
+
+if (mapa) {
+  const grupos = Array.from(mapa.querySelectorAll('.mapa__grupo'));
+
+  function destacar(seleccion, encender) {
+    seleccion.forEach(g => {
+      g.classList.toggle('is-activo', encender);
+      const region = mapa.querySelector('#' + g.dataset.region);
+      if (region) region.classList.toggle('is-activa', encender);
+    });
+  }
+
+  // Etiqueta: se enciende ella y su región
+  grupos.forEach(g => {
+    g.addEventListener('mouseenter', () => destacar([g], true));
+    g.addEventListener('mouseleave', () => destacar([g], false));
+  });
+
+  // Punto de una ciudad: se encienden todas las universidades que hay ahí
+  const fichas = Array.from(document.querySelectorAll('.mapa-eventos__ficha'));
+  const pista = document.querySelector('.mapa-eventos__pista');
+  const puntos = Array.from(mapa.querySelectorAll('.mapa__punto'));
+
+  function mostrarEventos(ciudad) {
+    fichas.forEach(f => f.classList.toggle('is-visible', f.dataset.ciudad === ciudad));
+    if (pista) pista.hidden = true;
+
+    puntos.forEach(p => p.classList.toggle('is-seleccionado', p.dataset.ciudad === ciudad));
+    const suGrupo = grupos.find(g => g.dataset.ciudad === ciudad);
+    mapa.querySelectorAll('.mapa__region').forEach(r => {
+      r.classList.toggle('is-seleccionada', !!suGrupo && r.id === suGrupo.dataset.region);
+    });
+  }
+
+  puntos.forEach(punto => {
+    const ciudad = punto.dataset.ciudad;
+    const deLaCiudad = grupos.filter(g => g.dataset.ciudad === ciudad);
+
+    punto.addEventListener('mouseenter', () => destacar(deLaCiudad, true));
+    punto.addEventListener('mouseleave', () => destacar(deLaCiudad, false));
+    punto.addEventListener('click', () => mostrarEventos(ciudad));
+
+    // Accesible con el teclado, no solo con el mouse
+    punto.setAttribute('role', 'button');
+    punto.setAttribute('tabindex', '0');
+    punto.setAttribute('aria-label', 'Ver los eventos realizados en ' + ciudad);
+    punto.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); mostrarEventos(ciudad); }
+    });
+    punto.addEventListener('focus', () => destacar(deLaCiudad, true));
+    punto.addEventListener('blur', () => destacar(deLaCiudad, false));
+  });
+}
+
+// ===== 11. Buscador y filtros de ponentes =====
+// Las opciones de los desplegables se arman leyendo la propia lista, así que
+// al agregar una universidad o un evento aparecen solas.
+const cajaBuscar = document.getElementById('buscar-ponente');
+
+if (cajaBuscar) {
+  const selUni = document.getElementById('filtro-universidad');
+  const selEvento = document.getElementById('filtro-evento');
+  const btnLimpiar = document.getElementById('limpiar-filtros');
+  const cuenta = document.querySelector('.filtros__cuenta');
+
+  // Lista plana: una ficha por persona, con todos sus eventos en la tarjeta.
+  const ORDEN_EVENTOS = ["I Congreso 2012","II Congreso 2014","III Congreso 2017",
+    "II Workshop 2018","IV Congreso 2019","III Workshop 2023","V Congreso 2024",
+    "IV Workshop 2025","VI Congreso 2026","V Workshop 2026"];
+
+  const todas = Array.from(document.querySelectorAll('#ponentes .ponente')).map(f => {
+    const casa = f.querySelector('.ponente__casa');
+    const evs = f.querySelector('.ponente__evento');
+    return {
+      el: f,
+      texto: f.textContent.replace(/\s+/g, ' ').toLowerCase(),
+      casa: casa ? casa.textContent.trim() : '',
+      eventos: evs ? evs.textContent.split('·').map(e => e.trim()) : [],
+    };
+  });
+
+  function llenar(select, valores, orden) {
+    valores.sort(orden).forEach(v => {
+      const o = document.createElement('option');
+      o.value = v; o.textContent = v;
+      select.appendChild(o);
+    });
+  }
+  llenar(selUni, [...new Set(todas.map(p => p.casa).filter(Boolean))],
+         (a, b) => a.localeCompare(b, 'es'));
+  llenar(selEvento, [...new Set(todas.flatMap(p => p.eventos))],
+         (a, b) => ORDEN_EVENTOS.indexOf(a) - ORDEN_EVENTOS.indexOf(b));
+
+  // Sin tildes, para que "Nunez" encuentre a "Núñez"
+  const limpiar = t => t.normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  function filtrar() {
+    const q = limpiar(cajaBuscar.value.trim().toLowerCase());
+    const uni = selUni.value;
+    const ev = selEvento.value;
+    let visibles = 0;
+
+    todas.forEach(p => {
+      const pasa = (!q || limpiar(p.texto).includes(q)) &&
+                   (!uni || p.casa === uni) &&
+                   (!ev || p.eventos.includes(ev));
+      p.el.hidden = !pasa;
+      if (pasa) visibles++;
+    });
+
+    const hayFiltro = q || uni || ev;
+    btnLimpiar.hidden = !hayFiltro;
+    cuenta.textContent = !hayFiltro
+      ? todas.length + ' ponentes en total'
+      : visibles === 0
+        ? 'Nadie coincide con esa búsqueda'
+        : visibles + (visibles === 1 ? ' ponente' : ' ponentes') + ' de ' + todas.length;
+  }
+
+  [cajaBuscar, selUni, selEvento].forEach(c => {
+    c.addEventListener('input', filtrar);
+    c.addEventListener('change', filtrar);
+  });
+  btnLimpiar.addEventListener('click', () => {
+    cajaBuscar.value = ''; selUni.value = ''; selEvento.value = '';
+    filtrar();
+    cajaBuscar.focus();
+  });
+  filtrar();
+}
+
+// ===== 12. Fotos de miembros que todavía no existen =====
 // Si el archivo de img/miembros/ aún no está subido, mostramos la silueta
 // gris en vez de un ícono de imagen rota. El evento 'error' no burbujea,
 // por eso lo escuchamos en fase de captura.
